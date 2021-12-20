@@ -43,7 +43,7 @@ struct Localized {
     static var exampleList: ExampleListStrings {
         return ExampleListStrings()
     }
-
+    
     static var exampleDetails: ExampleDetailsStrings {
         return ExampleDetailsStrings()
     }

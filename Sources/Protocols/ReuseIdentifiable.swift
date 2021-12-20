@@ -8,15 +8,15 @@
 import UIKit
 
 protocol ReuseIdentifiable {
-  static var reuseIdentifier: String { get }
+    static var reuseIdentifier: String { get }
 }
 
 extension ReuseIdentifiable {
-  static var reuseIdentifier: String {
-    return String(describing: self)
-  }
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
 }
 
-extension UITableViewCell: ReuseIdentifiable { }
-extension UITableViewHeaderFooterView: ReuseIdentifiable { }
-extension UICollectionReusableView: ReuseIdentifiable { }
+extension UITableViewCell: ReuseIdentifiable {}
+extension UITableViewHeaderFooterView: ReuseIdentifiable {}
+extension UICollectionReusableView: ReuseIdentifiable {}

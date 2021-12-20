@@ -21,6 +21,9 @@
 		011231E92770DB5700BC2B55 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011231E72770DB5700BC2B55 /* Localized.swift */; };
 		011231EE2770DBA700BC2B55 /* List.strings in Resources */ = {isa = PBXBuildFile; fileRef = 011231ED2770DBA700BC2B55 /* List.strings */; };
 		011231F02770DC3200BC2B55 /* String+Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011231EF2770DC3200BC2B55 /* String+Split.swift */; };
+		011231F62770E7EC00BC2B55 /* BaseTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011231F42770E7EC00BC2B55 /* BaseTableViewDiffableDataSource.swift */; };
+		011231F72770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011231F52770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift */; };
+		011231FA2770E9FA00BC2B55 /* Array+ElementAtIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011231F92770E9FA00BC2B55 /* Array+ElementAtIndex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		011231E72770DB5700BC2B55 /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		011231ED2770DBA700BC2B55 /* List.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = List.strings; sourceTree = "<group>"; };
 		011231EF2770DC3200BC2B55 /* String+Split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Split.swift"; sourceTree = "<group>"; };
+		011231F42770E7EC00BC2B55 /* BaseTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
+		011231F52770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
+		011231F92770E9FA00BC2B55 /* Array+ElementAtIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ElementAtIndex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		011231AC2770D73A00BC2B55 = {
 			isa = PBXGroup;
 			children = (
+				011231F32770E52C00BC2B55 /* DiffableDataSource */,
 				011231CC2770D78900BC2B55 /* Sources */,
 				011231E42770DAD600BC2B55 /* Resources */,
 				011231B72770D73A00BC2B55 /* SupportingFiles */,
@@ -114,6 +121,7 @@
 			children = (
 				011231EF2770DC3200BC2B55 /* String+Split.swift */,
 				011231D62770D8DB00BC2B55 /* UIView+Autolayout.swift */,
+				011231F92770E9FA00BC2B55 /* Array+ElementAtIndex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -169,6 +177,15 @@
 				011231ED2770DBA700BC2B55 /* List.strings */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		011231F32770E52C00BC2B55 /* DiffableDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				011231F42770E7EC00BC2B55 /* BaseTableViewDiffableDataSource.swift */,
+				011231F52770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift */,
+			);
+			path = DiffableDataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,8 +260,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011231F72770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift in Sources */,
 				011231DC2770D99200BC2B55 /* ConfigurableView.swift in Sources */,
 				011231E32770DA7600BC2B55 /* MainCoordinator.swift in Sources */,
+				011231F62770E7EC00BC2B55 /* BaseTableViewDiffableDataSource.swift in Sources */,
 				011231DE2770D99200BC2B55 /* ReuseIdentifiable.swift in Sources */,
 				011231DD2770D99200BC2B55 /* ConfigurableViewModel.swift in Sources */,
 				011231CF2770D83B00BC2B55 /* AppDelegate.swift in Sources */,
@@ -253,6 +272,7 @@
 				011231E82770DB5700BC2B55 /* ImageAsset.swift in Sources */,
 				011231F02770DC3200BC2B55 /* String+Split.swift in Sources */,
 				011231D42770D87B00BC2B55 /* BaseCoordinator.swift in Sources */,
+				011231FA2770E9FA00BC2B55 /* Array+ElementAtIndex.swift in Sources */,
 				011231D32770D87B00BC2B55 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
