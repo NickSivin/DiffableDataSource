@@ -77,6 +77,7 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <Common
     
     private func insertItems(_ items: [Item], at index: Int, snapshot: inout Snapshot) {
         iterateSections(items) { section, itemIdentifiers in
+            appendSectionIfNeeded(section, snapshot: &snapshot)
             deleteExistingItems(itemIdentifiers, in: section, snapshot: &snapshot)
             insertItems(itemIdentifiers, at: index, in: section, snapshot: &snapshot)
         }
