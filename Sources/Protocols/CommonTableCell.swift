@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CommonTableCellViewModel {
+protocol CommonTableCellViewModel: CommonDiffableDataItem {
     var tableCellIdentifier: String { get }
     var selectionStyle: UITableViewCell.SelectionStyle { get }
     var accessoryType: UITableViewCell.AccessoryType { get }

@@ -27,6 +27,9 @@
 		914F5EAA277200C8001169B6 /* CommonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F5EA9277200C8001169B6 /* CommonTableCell.swift */; };
 		914F5EAC277201BB001169B6 /* CommonTableSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F5EAB277201BB001169B6 /* CommonTableSectionViewModel.swift */; };
 		914F5EAE27720293001169B6 /* CommonTableHeaderFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F5EAD27720293001169B6 /* CommonTableHeaderFooterViewModel.swift */; };
+		91D789172772EB5E00877331 /* TableSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789162772EB5E00877331 /* TableSectionViewModel.swift */; };
+		91D789192772EBB600877331 /* AnyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789182772EBB600877331 /* AnyTableCell.swift */; };
+		91D7891C2772EED500877331 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D7891B2772EED500877331 /* UIColor+AppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		914F5EA9277200C8001169B6 /* CommonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableCell.swift; sourceTree = "<group>"; };
 		914F5EAB277201BB001169B6 /* CommonTableSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableSectionViewModel.swift; sourceTree = "<group>"; };
 		914F5EAD27720293001169B6 /* CommonTableHeaderFooterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableHeaderFooterViewModel.swift; sourceTree = "<group>"; };
+		91D789162772EB5E00877331 /* TableSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionViewModel.swift; sourceTree = "<group>"; };
+		91D789182772EBB600877331 /* AnyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTableCell.swift; sourceTree = "<group>"; };
+		91D7891B2772EED500877331 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 				011231CD2770D7F600BC2B55 /* Application */,
 				011231D02770D85200BC2B55 /* Base */,
 				011231D52770D8BF00BC2B55 /* Extensions */,
+				91D789142772EB2C00877331 /* Models */,
 				011231DF2770D9B400BC2B55 /* Modules */,
 				011231D82770D96A00BC2B55 /* Protocols */,
 			);
@@ -128,6 +135,7 @@
 				011231EF2770DC3200BC2B55 /* String+Split.swift */,
 				011231D62770D8DB00BC2B55 /* UIView+Autolayout.swift */,
 				011231F92770E9FA00BC2B55 /* Array+ElementAtIndex.swift */,
+				91D7891B2772EED500877331 /* UIColor+AppColors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -195,6 +203,23 @@
 				011231F52770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift */,
 			);
 			path = DiffableDataSource;
+			sourceTree = "<group>";
+		};
+		91D789142772EB2C00877331 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				91D789152772EB4B00877331 /* TableView */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		91D789152772EB4B00877331 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				91D789162772EB5E00877331 /* TableSectionViewModel.swift */,
+				91D789182772EBB600877331 /* AnyTableCell.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				914F5EAA277200C8001169B6 /* CommonTableCell.swift in Sources */,
+				91D7891C2772EED500877331 /* UIColor+AppColors.swift in Sources */,
 				011231F72770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift in Sources */,
 				011231DC2770D99200BC2B55 /* ConfigurableView.swift in Sources */,
 				011231E32770DA7600BC2B55 /* MainCoordinator.swift in Sources */,
@@ -282,6 +308,8 @@
 				011231E82770DB5700BC2B55 /* ImageAsset.swift in Sources */,
 				011231F02770DC3200BC2B55 /* String+Split.swift in Sources */,
 				914F5EAE27720293001169B6 /* CommonTableHeaderFooterViewModel.swift in Sources */,
+				91D789172772EB5E00877331 /* TableSectionViewModel.swift in Sources */,
+				91D789192772EBB600877331 /* AnyTableCell.swift in Sources */,
 				011231D42770D87B00BC2B55 /* BaseCoordinator.swift in Sources */,
 				011231FA2770E9FA00BC2B55 /* Array+ElementAtIndex.swift in Sources */,
 				011231D32770D87B00BC2B55 /* BaseViewController.swift in Sources */,

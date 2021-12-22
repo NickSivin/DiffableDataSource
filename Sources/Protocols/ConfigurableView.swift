@@ -8,5 +8,11 @@
 import Foundation
 
 protocol ConfigurableView {
-    func configure(with viewModel: ConfigurableViewModel)
+    associatedtype ViewModel: ConfigurableViewModel
+    func configure(with viewModel: ViewModel)
+    func prepareForReuse()
+}
+
+extension ConfigurableView {
+    func prepareForReuse() {}
 }

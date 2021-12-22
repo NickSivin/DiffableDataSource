@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CommonDiffableDataSection {
-    var items: [CommonDiffableDataItem] { get }
+    var diffableDataItems: [CommonDiffableDataItem] { get }
 }
 
 protocol CommonDiffableDataItem {
@@ -88,7 +88,7 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <Common
     
     private func appendItems(at sections: [Section], snapshot: inout Snapshot) {
         sections
-            .map { $0.items }
+            .map { $0.diffableDataItems }
             .enumerated()
             .forEach { section, items in
                 appendSectionIfNeeded(section, snapshot: &snapshot)
@@ -105,7 +105,7 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <Common
     
     private func updateItems(at sections: [Section], snapshot: inout Snapshot) {
         sections
-            .map { $0.items }
+            .map { $0.diffableDataItems }
             .enumerated()
             .forEach { section, items in
                 appendSectionIfNeeded(section, snapshot: &snapshot)
