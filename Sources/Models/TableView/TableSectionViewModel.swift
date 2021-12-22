@@ -27,8 +27,10 @@ class TableSectionViewModel: CommonTableSectionViewModel, CommonDiffableDataSect
     }
     
     // MARK: - Init
-    init(headerViewModel: CommonTableHeaderFooterViewModel? = nil,
+    init(cellViewModels: [CommonTableCellViewModel] = [],
+         headerViewModel: CommonTableHeaderFooterViewModel? = nil,
          footerViewModel: CommonTableHeaderFooterViewModel? = nil) {
+        self.cellViewModels = cellViewModels
         self.headerViewModel = headerViewModel
         self.footerViewModel = footerViewModel
     }

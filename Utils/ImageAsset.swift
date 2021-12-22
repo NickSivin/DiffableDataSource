@@ -9,7 +9,7 @@ import UIKit
 
 struct ImageAsset {
     enum ImageName: String {
-        case stickyHeader
+        case pagination
         
         var key: String {
             return rawValue

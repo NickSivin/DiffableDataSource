@@ -51,11 +51,11 @@ struct LayoutConstraintMaker {
         self.view = view
     }
     
-    func edgesEqualTo(_ view: UIView) {
-        leadingEqualTo(view)
-        trailingEqualTo(view)
-        topEqualTo(view)
-        bottomEqualTo(view)
+    func edgesEqualTo(_ view: UIView, insets: UIEdgeInsets = .zero) {
+        leadingEqualTo(view, offset: insets.left)
+        trailingEqualTo(view, offset: -insets.right)
+        topEqualTo(view, offset: insets.top)
+        bottomEqualTo(view, offset: -insets.bottom)
     }
     
     func leadingEqualTo(_ view: UIView, anchor: LayoutXAxisAnchor = .leading, offset: CGFloat = 0) {

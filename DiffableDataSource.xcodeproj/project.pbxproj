@@ -30,6 +30,13 @@
 		91D789172772EB5E00877331 /* TableSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789162772EB5E00877331 /* TableSectionViewModel.swift */; };
 		91D789192772EBB600877331 /* AnyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789182772EBB600877331 /* AnyTableCell.swift */; };
 		91D7891C2772EED500877331 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D7891B2772EED500877331 /* UIColor+AppColors.swift */; };
+		91D7891F2772F2AA00877331 /* ExampleListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D7891E2772F2AA00877331 /* ExampleListCoordinator.swift */; };
+		91D789212772F75900877331 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789202772F75900877331 /* Example.swift */; };
+		91D789232773160000877331 /* ExampleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789222773160000877331 /* ExampleListViewController.swift */; };
+		91D789252773183C00877331 /* ExampleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789242773183C00877331 /* ExampleListViewModel.swift */; };
+		91D7892927731AD000877331 /* CommonTableViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D7892827731AD000877331 /* CommonTableViewContainer.swift */; };
+		91D7893627733AC000877331 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D7893527733AC000877331 /* ExampleCell.swift */; };
+		91D7893827733ACB00877331 /* ExampleCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D7893727733ACB00877331 /* ExampleCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +65,13 @@
 		91D789162772EB5E00877331 /* TableSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionViewModel.swift; sourceTree = "<group>"; };
 		91D789182772EBB600877331 /* AnyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTableCell.swift; sourceTree = "<group>"; };
 		91D7891B2772EED500877331 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
+		91D7891E2772F2AA00877331 /* ExampleListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleListCoordinator.swift; sourceTree = "<group>"; };
+		91D789202772F75900877331 /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		91D789222773160000877331 /* ExampleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleListViewController.swift; sourceTree = "<group>"; };
+		91D789242773183C00877331 /* ExampleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleListViewModel.swift; sourceTree = "<group>"; };
+		91D7892827731AD000877331 /* CommonTableViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableViewContainer.swift; sourceTree = "<group>"; };
+		91D7893527733AC000877331 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
+		91D7893727733ACB00877331 /* ExampleCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +122,7 @@
 				91D789142772EB2C00877331 /* Models */,
 				011231DF2770D9B400BC2B55 /* Modules */,
 				011231D82770D96A00BC2B55 /* Protocols */,
+				91D7893227733A9100877331 /* View */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -149,6 +164,7 @@
 				914F5EA9277200C8001169B6 /* CommonTableCell.swift */,
 				914F5EAD27720293001169B6 /* CommonTableHeaderFooterViewModel.swift */,
 				914F5EAB277201BB001169B6 /* CommonTableSectionViewModel.swift */,
+				91D7892827731AD000877331 /* CommonTableViewContainer.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -156,6 +172,7 @@
 		011231DF2770D9B400BC2B55 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				91D7891D2772F25A00877331 /* ExampleList */,
 				011231E02770D9C600BC2B55 /* Main */,
 			);
 			path = Modules;
@@ -209,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				91D789152772EB4B00877331 /* TableView */,
+				91D789202772F75900877331 /* Example.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,6 +238,33 @@
 				91D789182772EBB600877331 /* AnyTableCell.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		91D7891D2772F25A00877331 /* ExampleList */ = {
+			isa = PBXGroup;
+			children = (
+				91D7891E2772F2AA00877331 /* ExampleListCoordinator.swift */,
+				91D789222773160000877331 /* ExampleListViewController.swift */,
+				91D789242773183C00877331 /* ExampleListViewModel.swift */,
+			);
+			path = ExampleList;
+			sourceTree = "<group>";
+		};
+		91D7893227733A9100877331 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				91D7893327733A9800877331 /* ExampleCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		91D7893327733A9800877331 /* ExampleCell */ = {
+			isa = PBXGroup;
+			children = (
+				91D7893527733AC000877331 /* ExampleCell.swift */,
+				91D7893727733ACB00877331 /* ExampleCellViewModel.swift */,
+			);
+			path = ExampleCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,10 +340,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				914F5EAA277200C8001169B6 /* CommonTableCell.swift in Sources */,
+				91D7891F2772F2AA00877331 /* ExampleListCoordinator.swift in Sources */,
+				91D7892927731AD000877331 /* CommonTableViewContainer.swift in Sources */,
 				91D7891C2772EED500877331 /* UIColor+AppColors.swift in Sources */,
 				011231F72770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift in Sources */,
+				91D7893827733ACB00877331 /* ExampleCellViewModel.swift in Sources */,
 				011231DC2770D99200BC2B55 /* ConfigurableView.swift in Sources */,
 				011231E32770DA7600BC2B55 /* MainCoordinator.swift in Sources */,
+				91D789212772F75900877331 /* Example.swift in Sources */,
+				91D7893627733AC000877331 /* ExampleCell.swift in Sources */,
+				91D789232773160000877331 /* ExampleListViewController.swift in Sources */,
 				011231F62770E7EC00BC2B55 /* BaseTableViewDiffableDataSource.swift in Sources */,
 				011231DE2770D99200BC2B55 /* ReuseIdentifiable.swift in Sources */,
 				011231DD2770D99200BC2B55 /* ConfigurableViewModel.swift in Sources */,
@@ -308,6 +359,7 @@
 				011231E82770DB5700BC2B55 /* ImageAsset.swift in Sources */,
 				011231F02770DC3200BC2B55 /* String+Split.swift in Sources */,
 				914F5EAE27720293001169B6 /* CommonTableHeaderFooterViewModel.swift in Sources */,
+				91D789252773183C00877331 /* ExampleListViewModel.swift in Sources */,
 				91D789172772EB5E00877331 /* TableSectionViewModel.swift in Sources */,
 				91D789192772EBB600877331 /* AnyTableCell.swift in Sources */,
 				011231D42770D87B00BC2B55 /* BaseCoordinator.swift in Sources */,

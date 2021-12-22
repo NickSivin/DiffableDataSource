@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CommonTableCellViewModel: CommonDiffableDataItem {
-    var tableCellIdentifier: String { get }
+    var reuseIdentifier: String { get }
     var selectionStyle: UITableViewCell.SelectionStyle { get }
     var accessoryType: UITableViewCell.AccessoryType { get }
     
