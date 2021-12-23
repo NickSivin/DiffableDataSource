@@ -24,16 +24,22 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <Common
     typealias ItemIdentifier = String
     typealias Snapshot = NSDiffableDataSourceSnapshot<SectionIdentifier, ItemIdentifier>
     
+    func updateData(allSections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {
+        snapshotContext(rowAnimation: rowAnimation, isCurrentState: false, animatingDifferences: animating) { snapshot in
+            allSections
+                .map { $0.diffableDataItems }
+                .enumerated()
+                .forEach { section, items in
+                    appendSectionIfNeeded(section, snapshot: &snapshot)
+                    snapshot.appendItems(items.identifiers, toSection: section)
+            }
+        }
+    }
+    
     func reloadData(allSections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {
         snapshotContext(rowAnimation: rowAnimation, animatingDifferences: animating) { snapshot in
             snapshot.deleteAllItems()
             appendItems(at: allSections, snapshot: &snapshot)
-        }
-    }
-    
-    func updateData(allSections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        snapshotContext(rowAnimation: rowAnimation, animatingDifferences: animating) { snapshot in
-            updateItems(at: allSections, snapshot: &snapshot)
         }
     }
     
@@ -103,23 +109,6 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <Common
         sections.forEach { deleteSectionIfNeeded($0, snapshot: &snapshot) }
     }
     
-    private func updateItems(at sections: [Section], snapshot: inout Snapshot) {
-        sections
-            .map { $0.diffableDataItems }
-            .enumerated()
-            .forEach { section, items in
-                appendSectionIfNeeded(section, snapshot: &snapshot)
-                updateItems(items.identifiers, in: section, snapshot: &snapshot)
-                deleteSectionIfNeeded(section, snapshot: &snapshot)
-        }
-    }
-    
-    private func updateItems(_ itemIdentifiers: [ItemIdentifier], in section: Int, snapshot: inout Snapshot) {
-        appendMissingItems(itemIdentifiers, in: section, snapshot: &snapshot)
-        reloadExistingItems(itemIdentifiers, in: section, snapshot: &snapshot)
-        deleteExtraItems(itemIdentifiers, in: section, snapshot: &snapshot)
-    }
-    
     private func deleteExistingItems(_ itemIdentifiers: [ItemIdentifier], in section: Int, snapshot: inout Snapshot) {
         let sectionItems = snapshot.itemIdentifiers(inSection: section)
         let existingItems = itemIdentifiers.filter { sectionItems.contains($0) }
@@ -171,13 +160,18 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <Common
     }
     
     private func snapshotContext(rowAnimation: RowAnimation,
+                                 isCurrentState: Bool = true,
                                  animatingDifferences: Bool = true,
                                  changes: (_ snapshot: inout Snapshot) -> Void) {
         defaultRowAnimation = rowAnimation
         
-        var snapshot = snapshot()
+        var snapshot = isCurrentState ? snapshot() : makeNewSnapshot()
         changes(&snapshot)
         apply(snapshot, animatingDifferences: animatingDifferences)
+    }
+    
+    private func makeNewSnapshot() -> NSDiffableDataSourceSnapshot<SectionIdentifier, ItemIdentifier> {
+        return NSDiffableDataSourceSnapshot<SectionIdentifier, ItemIdentifier>()
     }
 }
 
