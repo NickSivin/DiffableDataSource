@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ExampleCell: UIView, CommonTableCell, ReuseIdentifiable {
+class ExampleCell: UIView, TableCell, ReuseIdentifiable {
     private let contentView = UIView()
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
     
-    func configure(with viewModel: CommonTableCellViewModel) {
+    func configure(with viewModel: TableCellViewModel) {
         guard let viewModel = viewModel as? ExampleCellViewModel else { return }
         imageView.image = ImageAsset.image(named: viewModel.image)
         titleLabel.text = viewModel.title

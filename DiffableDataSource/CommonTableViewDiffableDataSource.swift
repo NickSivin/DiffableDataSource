@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol CommonDiffableDataSection {
-    var diffableDataItems: [CommonDiffableDataItem] { get }
+protocol DiffableDataSection {
+    var diffableDataItems: [DiffableDataItem] { get }
 }
 
-protocol CommonDiffableDataItem {
+protocol DiffableDataItem {
     var identifier: String { get }
 }
 
 class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <CommonTableViewDiffableDataSource.SectionIdentifier,
                                          CommonTableViewDiffableDataSource.ItemIdentifier> {
-    typealias Section = CommonDiffableDataSection
-    typealias Item = CommonDiffableDataItem
+    typealias Section = DiffableDataSection
+    typealias Item = DiffableDataItem
     typealias RowAnimation = UITableView.RowAnimation
     typealias SectionIdentifier = Int
     typealias ItemIdentifier = String
@@ -33,13 +33,6 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <Common
                     appendSectionIfNeeded(section, snapshot: &snapshot)
                     snapshot.appendItems(items.identifiers, toSection: section)
             }
-        }
-    }
-    
-    func reloadData(allSections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        snapshotContext(rowAnimation: rowAnimation, animatingDifferences: animating) { snapshot in
-            snapshot.deleteAllItems()
-            appendItems(at: allSections, snapshot: &snapshot)
         }
     }
     
@@ -175,7 +168,7 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <Common
     }
 }
 
-private extension Array where Element == CommonDiffableDataItem {
+private extension Array where Element == DiffableDataItem {
     var identifiers: [String] {
         return map { $0.identifier }
     }

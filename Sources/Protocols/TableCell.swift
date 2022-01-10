@@ -1,5 +1,5 @@
 //
-//  CommonTableCell.swift
+//  TableCell.swift
 //  DiffableDataSource
 //
 //  Created by Nick Sivin.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CommonTableCellViewModel: CommonDiffableDataItem {
+protocol TableCellViewModel: DiffableDataItem {
     var reuseIdentifier: String { get }
     var selectionStyle: UITableViewCell.SelectionStyle { get }
     var accessoryType: UITableViewCell.AccessoryType { get }
@@ -16,7 +16,7 @@ protocol CommonTableCellViewModel: CommonDiffableDataItem {
     func select(deselectionClosure: (() -> Void)?)
 }
 
-extension CommonTableCellViewModel {
+extension TableCellViewModel {
     func selectTableCell() {
         // do nothing by default
     }
@@ -34,17 +34,17 @@ extension CommonTableCellViewModel {
     }
 }
 
-protocol CommonTableCellContainerViewModel: CommonTableCellViewModel {
-    var contentViewModel: CommonTableCellViewModel { get }
+protocol TableCellContainerViewModel: TableCellViewModel {
+    var contentViewModel: TableCellViewModel { get }
 }
 
-extension CommonTableCellContainerViewModel {
+extension TableCellContainerViewModel {
     func select(deselectionClosure: (() -> Void)?) {
         contentViewModel.select(deselectionClosure: deselectionClosure)
     }
 }
 
-protocol CommonTableCell {
-    func configure(with viewModel: CommonTableCellViewModel)
+protocol TableCell {
+    func configure(with viewModel: TableCellViewModel)
 }
 

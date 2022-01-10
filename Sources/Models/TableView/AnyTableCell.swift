@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnyTableCell<ContentView: ConfigurableView>: UITableViewCell, CommonTableCell, ConfigurableView where ContentView: UIView {
+class AnyTableCell<ContentView: ConfigurableView>: UITableViewCell, TableCell, ConfigurableView where ContentView: UIView {
     typealias ViewModel = ContentView.ViewModel
     private let configurableView: ContentView
     
@@ -27,18 +27,18 @@ class AnyTableCell<ContentView: ConfigurableView>: UITableViewCell, CommonTableC
     }
     
     func configure(with viewModel: ViewModel) {
-        if let cellViewModel = viewModel as? CommonTableCellViewModel {
+        if let cellViewModel = viewModel as? TableCellViewModel {
             selectionStyle = cellViewModel.selectionStyle
             accessoryType = cellViewModel.accessoryType
         }
         configurableView.configure(with: viewModel)
     }
     
-    func configure(with viewModel: CommonTableCellViewModel) {
+    func configure(with viewModel: TableCellViewModel) {
         selectionStyle = viewModel.selectionStyle
         accessoryType = viewModel.accessoryType
         
-        if let containedViewModel = (viewModel as? CommonTableCellContainerViewModel)?.contentViewModel,
+        if let containedViewModel = (viewModel as? TableCellContainerViewModel)?.contentViewModel,
            let contentViewModel = containedViewModel as? ContentView.ViewModel {
             configurableView.configure(with: contentViewModel)
             return

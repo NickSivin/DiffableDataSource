@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ExampleCellViewModel: CommonTableCellViewModel {
+class ExampleCellViewModel: TableCellViewModel {
     var reuseIdentifier: String {
         return ExampleCell.reuseIdentifier
     }

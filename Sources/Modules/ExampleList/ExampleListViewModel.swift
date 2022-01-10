@@ -5,18 +5,18 @@
 
 import Foundation
 
-class ExampleListViewModel: CommonTableViewContainerViewModel {
+class ExampleListViewModel: TableViewContainerViewModel {
     var dataSource: CommonTableViewDiffableDataSource? {
         didSet {
             setupDataSource()
         }
     }
     
-    private(set) lazy var sections = makeSections()
+    private func setupDataSource() {
+        
+    }
     
-    private func makeSections() -> [CommonTableSectionViewModel] {
-        let mainSection = TableSectionViewModel(cellViewModels: [])
-        let cellViewModels = 
-        return [mainSection]
+    func cellViewModelForRow(at indexPath: IndexPath) -> TableCellViewModel? {
+        return nil
     }
 }

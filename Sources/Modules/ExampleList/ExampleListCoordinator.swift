@@ -23,13 +23,7 @@ class ExampleListCoordinator: BaseCoordinator {
     
     private func showExampleListScreen(animated: Bool) {
         let viewModel = ExampleListViewModel()
-        viewModel.delegate = self
         let viewController = ExampleListViewController(viewModel: viewModel)
-        viewController.title = Localized.exampleList.string(forKey: .title)
         navigationController.pushViewController(viewController, animated: true)
-    }
-    
-    private func showDetailsScreen(exampleDetailsConfiguration: ExampleDetailsConfiguration) {
-        
     }
 }
