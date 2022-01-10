@@ -8,12 +8,14 @@
 import Foundation
 
 class ExampleCellViewModel: TableCellViewModel {
-    var reuseIdentifier: String {
-        return ExampleCell.reuseIdentifier
-    }
+    let tableIdentifier = UUID()
     
     var identifier: String {
         return example.identifier
+    }
+    
+    var reuseIdentifier: String {
+        return ExampleCell.reuseIdentifier
     }
     
     var image: ImageAsset.ImageName {

@@ -9,7 +9,11 @@ import Foundation
 
 class CommonTableSectionViewModel: TableSectionViewModel, DiffableDataSection {
     // MARK: - Properties
-    var cellViewModels: [TableCellViewModel] = []
+    var cellViewModels: [TableCellViewModel] = [] {
+        didSet {
+            diffableDataItems = cellViewModels
+        }
+    }
     
     let headerViewModel: TableHeaderFooterViewModel?
     let footerViewModel: TableHeaderFooterViewModel?
@@ -22,9 +26,7 @@ class CommonTableSectionViewModel: TableSectionViewModel, DiffableDataSection {
         return cellViewModels.isEmpty
     }
     
-    var diffableDataItems: [DiffableDataItem] {
-        return cellViewModels
-    }
+    var diffableDataItems: [DiffableDataItem] = []
     
     // MARK: - Init
     init(cellViewModels: [TableCellViewModel] = [],
