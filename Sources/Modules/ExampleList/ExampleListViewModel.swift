@@ -5,18 +5,14 @@
 
 import Foundation
 
-class ExampleListViewModel: TableViewContainerViewModel {
-    var dataSource: CommonTableViewDiffableDataSource? {
-        didSet {
-            setupDataSource()
-        }
-    }
+class ExampleListViewModel: TableViewModel {
+    weak var tableDataSource: TableViewDiffableDataSource?
+    
+    var sectionViewModels: [TableSectionViewModel] = []
+    
+    
     
     private func setupDataSource() {
         
-    }
-    
-    func cellViewModelForRow(at indexPath: IndexPath) -> TableCellViewModel? {
-        return nil
     }
 }

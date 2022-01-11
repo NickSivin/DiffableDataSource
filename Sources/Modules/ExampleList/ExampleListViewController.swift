@@ -7,15 +7,16 @@
 
 import UIKit
 
-class ExampleListViewController: BaseViewController, TableViewContainer {
+class ExampleListViewController: BaseViewController {
     // MARK: - Properties
     let tableView = UITableView()
     let viewModel: ExampleListViewModel
     
-    private lazy var dataSource = makeTableViewDiffableDataSource()
+    private let tableDataController: TableDataController
     
     init(viewModel: ExampleListViewModel) {
         self.viewModel = viewModel
+        self.tableDataController = TableDataController(tableView: tableView, viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -29,7 +30,7 @@ class ExampleListViewController: BaseViewController, TableViewContainer {
     }
     
     private func setup() {
-        viewModel.dataSource = dataSource
+        setupTableView()
     }
     
     private func setupTableView() {

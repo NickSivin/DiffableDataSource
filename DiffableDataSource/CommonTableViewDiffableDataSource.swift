@@ -16,8 +16,8 @@ protocol DiffableDataItem: AnyObject {
     var tableIdentifier: UUID { get }
 }
 
-class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource <CommonTableViewDiffableDataSource.SectionIdentifier,
-                                         CommonTableViewDiffableDataSource.ItemIdentifier> {
+class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource<CommonTableViewDiffableDataSource.SectionIdentifier,
+                                         CommonTableViewDiffableDataSource.ItemIdentifier>, TableViewDiffableDataSource {
     typealias Section = DiffableDataSection
     typealias Item = DiffableDataItem
     typealias RowAnimation = UITableView.RowAnimation
