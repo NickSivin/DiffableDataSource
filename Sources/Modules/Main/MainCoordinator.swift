@@ -24,6 +24,8 @@ class MainCoordinator: BaseCoordinator {
     }
     
     func start(animated: Bool) {
-        // TODO: Start initial module
+        let coordinator = ExampleListCoordinator(navigationController: navigationController)
+        add(child: coordinator)
+        coordinator.start(animated: animated)
     }
 }

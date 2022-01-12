@@ -7,22 +7,15 @@
 
 import UIKit
 
-protocol TableCellViewModel: DiffableDataItem {
-    var reuseIdentifier: String { get }
+protocol TableCellViewModel: ConfigurableViewModel {
     var selectionStyle: UITableViewCell.SelectionStyle { get }
     var accessoryType: UITableViewCell.AccessoryType { get }
-    
-    func selectTableCell()
     func select(deselectionClosure: (() -> Void)?)
 }
 
 extension TableCellViewModel {
-    func selectTableCell() {
-        // do nothing by default
-    }
-    
     func select(deselectionClosure: (() -> Void)?) {
-        selectTableCell()
+        select(deselectionClosure: deselectionClosure)
     }
     
     var selectionStyle: UITableViewCell.SelectionStyle {

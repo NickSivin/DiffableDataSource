@@ -18,7 +18,8 @@ struct ImageAsset {
         }
     }
     
-    static func image(named name: ImageName) -> UIImage? {
+    static func image(named name: ImageName?) -> UIImage? {
+        guard let name = name else { return nil }
         return UIImage(named: name.key)
     }
 }

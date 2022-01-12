@@ -23,7 +23,21 @@ class ExampleListCoordinator: BaseCoordinator {
     
     private func showExampleListScreen(animated: Bool) {
         let viewModel = ExampleListViewModel()
+        viewModel.delegate = self
         let viewController = ExampleListViewController(viewModel: viewModel)
+        viewController.title = Localized.exampleList.string(forKey: .title)
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    private func showExampleDetailsScreen(example: Example) {
+        let coordinator = ExampleDetailsCoordinator(navigationController: navigationController, example: example)
+        add(child: coordinator)
+        coordinator.start(animated: true)
+    }
+}
+
+extension ExampleListCoordinator: ExampleListViewModelDelegate {
+    func exampleListViewModel(_ viewModel: ExampleListViewModel, didSelectExample example: Example) {
+        showExampleDetailsScreen(example: example)
     }
 }

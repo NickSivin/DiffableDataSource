@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol DiffableDataSection: AnyObject {
-    var diffableDataItems: [DiffableDataItem] { get set }
+protocol DiffableDataSection {
+    var diffableDataItems: [DiffableDataItem] { get }
 }
 
-protocol DiffableDataItem: AnyObject {
+protocol DiffableDataItem {
     var identifier: String { get }
     var tableIdentifier: UUID { get }
 }
@@ -34,6 +34,13 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource<CommonT
                     appendSectionIfNeeded(section, snapshot: &snapshot)
                     snapshot.appendItems(items.tableIdentifiers, toSection: section)
             }
+        }
+    }
+    
+    func updateData(items: [Item], rowAnimation: RowAnimation = .none, animating: Bool = false) {
+        snapshotContext(rowAnimation: rowAnimation, isCurrentState: false, animatingDifferences: animating) { snapshot in
+            appendSectionIfNeeded(0, snapshot: &snapshot)
+            snapshot.appendItems(items.tableIdentifiers, toSection: 0)
         }
     }
     

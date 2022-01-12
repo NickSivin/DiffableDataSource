@@ -1,7 +1,9 @@
 /* 
-  List.strings
+  ExampleList.strings
   DiffableDataSource
 
   Created by Nick Sivin.
   
 */
+
+"title" = "Examples";

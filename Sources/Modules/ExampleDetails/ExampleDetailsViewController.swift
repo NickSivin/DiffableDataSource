@@ -1,5 +1,5 @@
 //
-//  ExampleListViewController.swift
+//  ExampleDetailsViewController.swift
 //  DiffableDataSource
 //
 //  Created by Nick Sivin.
@@ -7,14 +7,15 @@
 
 import UIKit
 
-class ExampleListViewController: BaseViewController {
+class ExampleDetailsViewController: BaseViewController {
     // MARK: - Properties
-    let tableView = UITableView()
-    let viewModel: ExampleListViewModel
-    
+    private let tableView = UITableView()
     private let tableDataController: TableDataController
     
-    init(viewModel: ExampleListViewModel) {
+    private let viewModel: ExampleDetailsViewModel
+    
+    // MARK: - Init
+    init(viewModel: ExampleDetailsViewModel) {
         self.viewModel = viewModel
         self.tableDataController = CommonTableDataController(tableView: tableView, viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
@@ -24,15 +25,17 @@ class ExampleListViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
     
+    // MARK: - Private
     private func setup() {
         view.backgroundColor = .background
         setupTableView()
-        viewModel.loadExamples()
+        viewModel.loadData()
     }
     
     private func setupTableView() {
@@ -42,5 +45,6 @@ class ExampleListViewController: BaseViewController {
         }
         
         tableView.register(ExampleCell.self, forCellReuseIdentifier: ExampleCell.reuseIdentifier)
+        tableView.register(PaginationCell.self, forCellReuseIdentifier: PaginationCell.reuseIdentifier)
     }
 }

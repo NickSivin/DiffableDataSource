@@ -7,14 +7,21 @@
 
 import Foundation
 
-struct Example {
+struct Example: DiffableDataItem {
+    let tableIdentifier = UUID()
+    
     let identifier: String
-    let image: ImageAsset.ImageName
+    let image: ImageAsset.ImageName?
     let title: String
     let type: ExampleType
-}
-
-enum ExampleType {
-    case pagination
-    case dragAndDrop
+    
+    init(identifier: String = UUID().uuidString,
+         image: ImageAsset.ImageName? = nil,
+         title: String,
+         type: ExampleType) {
+        self.identifier = identifier
+        self.image = image
+        self.title = title
+        self.type = type
+    }
 }

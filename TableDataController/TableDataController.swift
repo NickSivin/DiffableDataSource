@@ -11,7 +11,13 @@ protocol TableDataControllerDelegate: AnyObject {
     func tableDataController(_ controller: TableDataController, scrollViewDidScroll scrollView: UIScrollView)
 }
 
-class TableDataController: NSObject {
+protocol TableDataController {
+    var delegate: TableDataControllerDelegate? { get set }
+    var isScrolling: Bool { get }
+    init(tableView: UITableView, viewModel: TableViewModel)
+}
+
+class CommonTableDataController: NSObject, TableDataController {
     typealias TableDataSource = CommonTableViewDiffableDataSource
     
     weak var delegate: TableDataControllerDelegate?
@@ -32,18 +38,20 @@ class TableDataController: NSObject {
         return cell
     }
     
-    init(tableView: UITableView, viewModel: TableViewModel) {
+    required init(tableView: UITableView, viewModel: TableViewModel) {
         self.tableView = tableView
         self.viewModel = viewModel
         super.init()
         
+        self.tableView.backgroundColor = .clear
+        self.tableView.separatorColor = .clear
         self.tableView.delegate = self
         self.viewModel.tableDataSource = tableDataSource
     }
 }
 
 // MARK: - UITableViewDelegate
-extension TableDataController: UITableViewDelegate {
+extension CommonTableDataController: UITableViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isScrolling = true
     }
@@ -56,8 +64,7 @@ extension TableDataController: UITableViewDelegate {
         return viewModel.editingStyle(forIndexPath: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         viewModel.commit(editStyle: editingStyle, indexPath: indexPath)
     }
     
@@ -70,13 +77,16 @@ extension TableDataController: UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
-                   forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cellViewModel = viewModel.cellViewModelForRow(at: indexPath)
         if var cachingCellViewModel = cellViewModel as? CellHeightCaching,
            cachingCellViewModel.cachedHeight == nil {
             cell.layoutIfNeeded()
             cachingCellViewModel.cachedHeight = cell.frame.height
+        }
+        
+        if cell is PaginationCell {
+            (viewModel as? PaginationTableViewModel)?.loadData()
         }
     }
     

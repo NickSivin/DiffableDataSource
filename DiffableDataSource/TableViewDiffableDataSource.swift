@@ -13,6 +13,7 @@ protocol TableViewDiffableDataSource: AnyObject {
     typealias RowAnimation = UITableView.RowAnimation
     
     func updateData(sections: [Section], rowAnimation: RowAnimation, animating: Bool)
+    func updateData(items: [Item], rowAnimation: RowAnimation, animating: Bool)
     func reloadData(sections: [Section], rowAnimation: RowAnimation, animating: Bool)
     func insertItem(_ item: Item, at index: Int, in section: Int, rowAnimation: RowAnimation, animating: Bool)
     func insertItems(_ items: [Item], at index: Int, in section: Int, rowAnimation: RowAnimation, animating: Bool)
@@ -27,6 +28,10 @@ protocol TableViewDiffableDataSource: AnyObject {
 extension TableViewDiffableDataSource {
     func updateData(sections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {
         updateData(sections: sections, rowAnimation: rowAnimation, animating: animating)
+    }
+    
+    func updateData(items: [Item], rowAnimation: RowAnimation = .none, animating: Bool = false) {
+        updateData(items: items, rowAnimation: rowAnimation, animating: animating)
     }
     
     func reloadData(sections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {

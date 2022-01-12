@@ -7,21 +7,31 @@
 
 import UIKit
 
-class ExampleCell: UIView, TableCell, ReuseIdentifiable {
+typealias ExampleCell = AnyTableCell<ExampleCellContent>
+
+class ExampleCellContent: UIView, ConfigurableView, ReuseIdentifiable {
     private let contentView = UIView()
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
     
-    func configure(with viewModel: TableCellViewModel) {
-        guard let viewModel = viewModel as? ExampleCellViewModel else { return }
+    init() {
+        super.init(frame: .zero)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with viewModel: ExampleCellViewModel) {
         imageView.image = ImageAsset.image(named: viewModel.image)
         titleLabel.text = viewModel.title
     }
     
     private func setup() {
         setupContentView()
-        setupImageView()
         setupTitleLabel()
+        setupImageView()
     }
     
     private func setupContentView() {
@@ -29,31 +39,29 @@ class ExampleCell: UIView, TableCell, ReuseIdentifiable {
         contentView.constraintsSupport.makeConstraints { make in
             make.edgesEqualTo(self, insets: .init(top: 8, left: 16, bottom: 8, right: 16))
         }
-    }
-    
-    private func setupImageView() {
-        contentView.addSubview(imageView)
-        imageView.constraintsSupport.makeConstraints { make in
-            make.topEqualTo(contentView, offset: 16)
-            make.leadingEqualTo(contentView, offset: 16)
-            make.bottomEqualTo(contentView, offset: 16)
-            make.widthEqualToHeight()
-            make.heightEqualTo(32)
-        }
-        imageView.tintColor = .base3
-        imageView.layer.cornerRadius = 4
-        imageView.layer.masksToBounds = true
-        imageView.backgroundColor = .base1
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 10
     }
     
     private func setupTitleLabel() {
         contentView.addSubview(titleLabel)
         titleLabel.constraintsSupport.makeConstraints { make in
-            make.trailingEqualTo(contentView, offset: -16)
-            make.leadingEqualTo(imageView, anchor: .trailing, offset: 4)
-            make.centerEqualTo(imageView, anchor: .yAnchor)
+            make.leadingEqualTo(contentView, offset: 16)
+            make.centerEqualTo(contentView, anchor: .yAnchor)
         }
-        titleLabel.font = .systemFont(ofSize: 16, weight: .thin)
+        titleLabel.font = .systemFont(ofSize: 16, weight: .light)
         titleLabel.textColor = .base3
+    }
+    
+    private func setupImageView() {
+        contentView.addSubview(imageView)
+        imageView.constraintsSupport.makeConstraints { make in
+            make.leadingEqualTo(titleLabel, anchor: .trailing, offset: 4)
+            make.topEqualTo(contentView, offset: 16)
+            make.trailingEqualTo(contentView, offset: -16)
+            make.bottomEqualTo(contentView, offset: -16)
+            make.sizeEqualTo(32)
+        }
+        imageView.tintColor = .base3
     }
 }

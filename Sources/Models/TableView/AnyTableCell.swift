@@ -57,7 +57,7 @@ class AnyTableCell<ContentView: ConfigurableView>: UITableViewCell, TableCell, C
         contentView.backgroundColor = superview?.backgroundColor ?? .clear
         contentView.addSubview(configurableView)
         configurableView.constraintsSupport.makeConstraints { make in
-            make.edgesEqualTo(contentView)
+            make.edgesEqualTo(contentView, priority: UILayoutPriority(999))
         }
     }
 }
