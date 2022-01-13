@@ -42,6 +42,13 @@
 		911C0CC1278EE2D40059CF03 /* PaginationDiffableDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CC0278EE2D40059CF03 /* PaginationDiffableDataItem.swift */; };
 		911C0CC3278EE61F0059CF03 /* PaginationTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CC2278EE61F0059CF03 /* PaginationTableViewModel.swift */; };
 		911C0CC5278EEF6E0059CF03 /* ExampleList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 911C0CC4278EEF6E0059CF03 /* ExampleList.strings */; };
+		911C0CC7278FBC3D0059CF03 /* DragAndDroppable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CC6278FBC3D0059CF03 /* DragAndDroppable.swift */; };
+		911C0CC9278FBEE00059CF03 /* StringIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CC8278FBEE00059CF03 /* StringIdentifiable.swift */; };
+		911C0CCC278FCD7B0059CF03 /* PaginationExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CCB278FCD7B0059CF03 /* PaginationExampleViewModel.swift */; };
+		911C0CD0278FD1520059CF03 /* DragAndDropExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CCF278FD1520059CF03 /* DragAndDropExampleViewModel.swift */; };
+		911C0CD2278FD62A0059CF03 /* DragAndDropMockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CD1278FD62A0059CF03 /* DragAndDropMockDataSource.swift */; };
+		911C0CD5278FE5610059CF03 /* ExampleHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CD4278FE5610059CF03 /* ExampleHeaderViewModel.swift */; };
+		911C0CD8278FE5A30059CF03 /* ExampleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CD7278FE5A30059CF03 /* ExampleHeaderView.swift */; };
 		914F5EAA277200C8001169B6 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F5EA9277200C8001169B6 /* TableCell.swift */; };
 		914F5EAE27720293001169B6 /* TableHeaderFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F5EAD27720293001169B6 /* TableHeaderFooterViewModel.swift */; };
 		91D789192772EBB600877331 /* AnyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789182772EBB600877331 /* AnyTableCell.swift */; };
@@ -94,6 +101,13 @@
 		911C0CC0278EE2D40059CF03 /* PaginationDiffableDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationDiffableDataItem.swift; sourceTree = "<group>"; };
 		911C0CC2278EE61F0059CF03 /* PaginationTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationTableViewModel.swift; sourceTree = "<group>"; };
 		911C0CC4278EEF6E0059CF03 /* ExampleList.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = ExampleList.strings; sourceTree = "<group>"; };
+		911C0CC6278FBC3D0059CF03 /* DragAndDroppable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDroppable.swift; sourceTree = "<group>"; };
+		911C0CC8278FBEE00059CF03 /* StringIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringIdentifiable.swift; sourceTree = "<group>"; };
+		911C0CCB278FCD7B0059CF03 /* PaginationExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationExampleViewModel.swift; sourceTree = "<group>"; };
+		911C0CCF278FD1520059CF03 /* DragAndDropExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDropExampleViewModel.swift; sourceTree = "<group>"; };
+		911C0CD1278FD62A0059CF03 /* DragAndDropMockDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDropMockDataSource.swift; sourceTree = "<group>"; };
+		911C0CD4278FE5610059CF03 /* ExampleHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleHeaderViewModel.swift; sourceTree = "<group>"; };
+		911C0CD7278FE5A30059CF03 /* ExampleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleHeaderView.swift; sourceTree = "<group>"; };
 		914F5EA9277200C8001169B6 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		914F5EAD27720293001169B6 /* TableHeaderFooterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderFooterViewModel.swift; sourceTree = "<group>"; };
 		91D789182772EBB600877331 /* AnyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTableCell.swift; sourceTree = "<group>"; };
@@ -201,6 +215,8 @@
 				914F5EAD27720293001169B6 /* TableHeaderFooterViewModel.swift */,
 				91D78947277964BC00877331 /* TableSectionViewModel.swift */,
 				911C0C97278D4A960059CF03 /* CellHeightCaching.swift */,
+				911C0CC6278FBC3D0059CF03 /* DragAndDroppable.swift */,
+				911C0CC8278FBEE00059CF03 /* StringIdentifiable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -282,6 +298,7 @@
 		911C0CA5278E9F720059CF03 /* ExampleDetails */ = {
 			isa = PBXGroup;
 			children = (
+				911C0CCA278FCCEF0059CF03 /* ViewModels */,
 				911C0CA6278E9F820059CF03 /* ExampleDetailsCoordinator.swift */,
 				911C0CA8278E9F8D0059CF03 /* ExampleDetailsViewController.swift */,
 				911C0CAA278E9F940059CF03 /* ExampleDetailsViewModel.swift */,
@@ -304,6 +321,7 @@
 				911C0CAE278EA4860059CF03 /* MockDataSource.swift */,
 				911C0CB2278EA5EE0059CF03 /* MockDataSourceResponse.swift */,
 				911C0CB0278EA56D0059CF03 /* PaginationMockDataSource.swift */,
+				911C0CD1278FD62A0059CF03 /* DragAndDropMockDataSource.swift */,
 			);
 			path = MockDataStrategy;
 			sourceTree = "<group>";
@@ -315,6 +333,31 @@
 				911C0CBA278ECE2F0059CF03 /* PaginationCellViewModel.swift */,
 			);
 			path = PaginationCell;
+			sourceTree = "<group>";
+		};
+		911C0CCA278FCCEF0059CF03 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				911C0CCB278FCD7B0059CF03 /* PaginationExampleViewModel.swift */,
+				911C0CCF278FD1520059CF03 /* DragAndDropExampleViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		911C0CD6278FE5910059CF03 /* ExampleHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				911C0CD7278FE5A30059CF03 /* ExampleHeaderView.swift */,
+				911C0CD4278FE5610059CF03 /* ExampleHeaderViewModel.swift */,
+			);
+			path = ExampleHeaderView;
+			sourceTree = "<group>";
+		};
+		911C0CD9278FFA930059CF03 /* ProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfileCell;
 			sourceTree = "<group>";
 		};
 		91D789142772EB2C00877331 /* Models */ = {
@@ -351,6 +394,8 @@
 		91D7893227733A9100877331 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				911C0CD9278FFA930059CF03 /* ProfileCell */,
+				911C0CD6278FE5910059CF03 /* ExampleHeaderView */,
 				911C0CB7278ECE1B0059CF03 /* PaginationCell */,
 				91D7893327733A9800877331 /* ExampleCell */,
 			);
@@ -442,7 +487,9 @@
 				911C0CAB278E9F940059CF03 /* ExampleDetailsViewModel.swift in Sources */,
 				911C0CB5278EA7420059CF03 /* MockRequestSimulating.swift in Sources */,
 				914F5EAA277200C8001169B6 /* TableCell.swift in Sources */,
+				911C0CD0278FD1520059CF03 /* DragAndDropExampleViewModel.swift in Sources */,
 				91D7891F2772F2AA00877331 /* ExampleListCoordinator.swift in Sources */,
+				911C0CD2278FD62A0059CF03 /* DragAndDropMockDataSource.swift in Sources */,
 				91D7891C2772EED500877331 /* UIColor+AppColors.swift in Sources */,
 				911C0CB3278EA5EE0059CF03 /* MockDataSourceResponse.swift in Sources */,
 				91D78948277964BC00877331 /* TableSectionViewModel.swift in Sources */,
@@ -454,6 +501,7 @@
 				91D789212772F75900877331 /* Example.swift in Sources */,
 				91D7893627733AC000877331 /* ExampleCell.swift in Sources */,
 				91D789232773160000877331 /* ExampleListViewController.swift in Sources */,
+				911C0CC9278FBEE00059CF03 /* StringIdentifiable.swift in Sources */,
 				011231F62770E7EC00BC2B55 /* BaseTableViewDiffableDataSource.swift in Sources */,
 				011231DE2770D99200BC2B55 /* ReuseIdentifiable.swift in Sources */,
 				011231DD2770D99200BC2B55 /* ConfigurableViewModel.swift in Sources */,
@@ -462,6 +510,7 @@
 				911C0CA7278E9F820059CF03 /* ExampleDetailsCoordinator.swift in Sources */,
 				911C0CC3278EE61F0059CF03 /* PaginationTableViewModel.swift in Sources */,
 				911C0CBF278ED61A0059CF03 /* ExampleType.swift in Sources */,
+				911C0CCC278FCD7B0059CF03 /* PaginationExampleViewModel.swift in Sources */,
 				011231CF2770D83B00BC2B55 /* AppDelegate.swift in Sources */,
 				911C0C94278C4CE90059CF03 /* TableDataController.swift in Sources */,
 				011231E92770DB5700BC2B55 /* Localized.swift in Sources */,
@@ -474,6 +523,8 @@
 				911C0C9A278D4DB00059CF03 /* TableViewDiffableDataSource.swift in Sources */,
 				911C0CB9278ECE280059CF03 /* PaginationCell.swift in Sources */,
 				91D789462779643300877331 /* CommonTableSectionViewModel.swift in Sources */,
+				911C0CC7278FBC3D0059CF03 /* DragAndDroppable.swift in Sources */,
+				911C0CD8278FE5A30059CF03 /* ExampleHeaderView.swift in Sources */,
 				914F5EAE27720293001169B6 /* TableHeaderFooterViewModel.swift in Sources */,
 				91D789252773183C00877331 /* ExampleListViewModel.swift in Sources */,
 				91D789192772EBB600877331 /* AnyTableCell.swift in Sources */,
@@ -482,6 +533,7 @@
 				911C0CBB278ECE2F0059CF03 /* PaginationCellViewModel.swift in Sources */,
 				911C0CC1278EE2D40059CF03 /* PaginationDiffableDataItem.swift in Sources */,
 				011231D32770D87B00BC2B55 /* BaseViewController.swift in Sources */,
+				911C0CD5278FE5610059CF03 /* ExampleHeaderViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

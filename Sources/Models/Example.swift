@@ -25,3 +25,5 @@ struct Example: DiffableDataItem {
         self.type = type
     }
 }
+
+extension Example: ExampleCellModel {}

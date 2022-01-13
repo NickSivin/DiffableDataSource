@@ -32,7 +32,7 @@ class ExampleListViewController: BaseViewController {
     private func setup() {
         view.backgroundColor = .background
         setupTableView()
-        viewModel.loadExamples()
+        viewModel.loadData()
     }
     
     private func setupTableView() {

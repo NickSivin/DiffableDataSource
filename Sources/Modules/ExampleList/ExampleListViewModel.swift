@@ -18,7 +18,7 @@ class ExampleListViewModel: TableViewModel {
     private let factory = ExampleListFactory()
     private var examples: [Example] = []
     
-    func loadExamples() {
+    func loadData() {
         examples = factory.makeExamples()
         updateTableData()
     }

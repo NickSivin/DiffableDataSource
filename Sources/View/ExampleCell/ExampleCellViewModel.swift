@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol ExampleCellModel {
+    var title: String { get }
+    var image: ImageAsset.ImageName? { get }
+}
+
 class ExampleCellViewModel: TableCellViewModel {
     var onDidSelect: (() -> Void)?
     
@@ -22,9 +27,9 @@ class ExampleCellViewModel: TableCellViewModel {
         return example.title
     }
     
-    private let example: Example
+    private let example: ExampleCellModel
     
-    init(example: Example) {
+    init(example: ExampleCellModel) {
         self.example = example
     }
     

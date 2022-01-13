@@ -63,5 +63,6 @@ class ExampleCellContent: UIView, ConfigurableView, ReuseIdentifiable {
             make.sizeEqualTo(32)
         }
         imageView.tintColor = .base3
+        imageView.contentMode = .scaleAspectFit
     }
 }

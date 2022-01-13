@@ -5,7 +5,7 @@
 //  Created by Nick Sivin.
 //
 
-import Foundation
+import CoreGraphics
 
 private enum Constants {
     static let elementsPerRequestCount = 30
@@ -14,7 +14,8 @@ private enum Constants {
 
 class PaginationMockDataSource: MockDataSource {
     func getMockData(cursor: String?, completion: @escaping ((MockDataSourceResponse) -> Void)) {
-        simulateRequest { [weak self] in
+        let delay: CGFloat = cursor == nil ? 0 : 2
+        simulateRequest(delay: delay) { [weak self] in
             guard let self = self else { return }
             let response = self.makeMockData(cursor: cursor)
             completion(response)
@@ -23,16 +24,21 @@ class PaginationMockDataSource: MockDataSource {
     
     private func makeMockData(cursor: String?) -> MockDataSourceResponse {
         let index = findIndex(for: cursor)
-        let lastIndex = min(index + Constants.elementsPerRequestCount, Constants.availableElementsCount - 1)
-        let indices = Array(index..<lastIndex)
+        let lastIndex = min(index + Constants.elementsPerRequestCount - 1, Constants.availableElementsCount - 1)
+        let indices = Array(index...lastIndex)
         
-        let data = indices.map { Example(identifier: String($0),
-                                         title: String($0) + " Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                                         type: .pagination) }
+        let items = indices.map {
+            MockDataItem(identifier: String($0),
+                         title: "Item \(String($0 + 1))")
+        }
+        
         let newCursorIndex = lastIndex + 1
         let newCursor = String(newCursorIndex)
         let hasMoreData = newCursorIndex < Constants.availableElementsCount
-        return MockDataSourceResponse(cursor: newCursor, hasMoreData: hasMoreData, data: data)
+        
+        let sections = [MockDataSection(items: items)]
+        
+        return MockDataSourceResponse(cursor: newCursor, hasMoreData: hasMoreData, data: sections)
     }
     
     private func findIndex(for cursor: String?) -> Int {

@@ -10,6 +10,7 @@ import UIKit
 struct ImageAsset {
     enum ImageName: String {
         case pagination
+        case dragAndDrop
         
         var key: String {
             return rawValue

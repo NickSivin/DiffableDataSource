@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TableSectionViewModel {
+protocol TableSectionViewModel: AnyObject {
     var cellViewModels: [TableCellViewModel] { get set }
     var headerViewModel: TableHeaderFooterViewModel? { get }
     var footerViewModel: TableHeaderFooterViewModel? { get }

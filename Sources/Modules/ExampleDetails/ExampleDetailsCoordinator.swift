@@ -24,9 +24,18 @@ class ExampleDetailsCoordinator: BaseCoordinator {
     }
     
     private func showExampleDetailsScreen(animated: Bool) {
-        let viewModel = ExampleDetailsViewModel(mockDataSource: example.type.mockDataSource)
+        let viewModel = makeExampleDetailsViewModel()
         let viewController = ExampleDetailsViewController(viewModel: viewModel)
         viewController.title = example.title
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    private func makeExampleDetailsViewModel() -> ExampleDetailsViewModel {
+        switch example.type {
+        case .pagination:
+            return PaginationExampleViewModel(example: example)
+        case .dragAndDrop:
+            return DragAndDropExampleViewModel(example: example)
+        }
     }
 }

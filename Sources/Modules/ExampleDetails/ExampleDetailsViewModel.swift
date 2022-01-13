@@ -7,21 +7,18 @@
 
 import Foundation
 
-class ExampleDetailsViewModel: PaginationTableViewModel {
-    var tableDataSource: TableViewDiffableDataSource?
-    var sectionViewModels: [TableSectionViewModel] = []
-    var hasMoreData = true
+protocol ExampleDetailsViewModel: TableViewModel {
+    var mockDataSource: MockDataSource { get }
+    var cursor: String? { get set }
+    var isLoading: Bool { get set }
     
-    private let mockDataSource: MockDataSource
-    private var cursor: String?
-    private var isLoading = false
-    private var examples: [Example] = []
-    private let paginationItem = PaginationDiffableDataItem()
+    init(example: Example)
     
-    init(mockDataSource: MockDataSource) {
-        self.mockDataSource = mockDataSource
-    }
-    
+    func handleResponse(_ response: MockDataSourceResponse)
+    func updateTableData(animating: Bool)
+}
+
+extension ExampleDetailsViewModel {
     func loadData() {
         guard !isLoading else { return }
         isLoading = true
@@ -31,23 +28,5 @@ class ExampleDetailsViewModel: PaginationTableViewModel {
             self.handleResponse(response)
             self.updateTableData(animating: !self.sectionViewModels.isEmpty)
         }
-    }
-    
-    private func handleResponse(_ response: MockDataSourceResponse) {
-        hasMoreData = response.hasMoreData
-        cursor = response.cursor
-        examples.append(contentsOf: response.data)
-    }
-    
-    private func updateTableData(animating: Bool) {
-        var cellViewModels: [TableCellViewModel] = examples.map { ExampleCellViewModel(example: $0) }
-        var diffableDataItems: [DiffableDataItem] = examples
-        if hasMoreData {
-            cellViewModels.append(PaginationCellViewModel())
-            diffableDataItems.append(paginationItem)
-        }
-        sectionViewModels = [CommonTableSectionViewModel(cellViewModels: cellViewModels)]
-        
-        tableDataSource?.updateData(items: diffableDataItems, rowAnimation: .fade, animating: animating)
     }
 }

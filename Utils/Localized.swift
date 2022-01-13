@@ -68,6 +68,8 @@ struct ExampleDetailsStrings: LocalizedStrings {
     
     enum Keys: String, LocalizedKeyConvertable {
         case pagination
+        case dragAndDrop
+        case profile
     }
     
     var tableName: String? {

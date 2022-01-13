@@ -18,7 +18,7 @@ extension ExampleType {
         case .pagination:
             return PaginationMockDataSource()
         case .dragAndDrop:
-            return PaginationMockDataSource()
+            return DragAndDropMockDataSource()
         }
     }
 }

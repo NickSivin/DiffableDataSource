@@ -7,6 +7,4 @@
 
 import Foundation
 
-protocol PaginationTableViewModel: TableViewModel {
-    func loadData()
-}
+protocol PaginationTableViewModel: TableViewModel {}

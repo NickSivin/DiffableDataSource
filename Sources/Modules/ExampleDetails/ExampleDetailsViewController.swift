@@ -46,5 +46,6 @@ class ExampleDetailsViewController: BaseViewController {
         
         tableView.register(ExampleCell.self, forCellReuseIdentifier: ExampleCell.reuseIdentifier)
         tableView.register(PaginationCell.self, forCellReuseIdentifier: PaginationCell.reuseIdentifier)
+        tableView.register(ExampleHeaderView.self, forHeaderFooterViewReuseIdentifier: ExampleHeaderView.reuseIdentifier)
     }
 }
