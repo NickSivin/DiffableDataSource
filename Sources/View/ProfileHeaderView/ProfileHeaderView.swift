@@ -49,6 +49,6 @@ class ProfileHeaderView: UIView {
             make.bottomEqualTo(self, offset: -24)
         }
         nameLabel.textColor = .base3
-        nameLabel.font = .systemFont(ofSize: 18, weight: .light)
+        nameLabel.font = .systemFont(ofSize: 18, weight: .regular)
     }
 }

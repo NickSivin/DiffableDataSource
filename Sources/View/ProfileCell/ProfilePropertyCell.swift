@@ -82,6 +82,7 @@ class ProfilePropertyCellContentView: UIView, ConfigurableView {
             make.leadingEqualTo(contentView, offset: 16)
             make.centerEqualTo(contentView, anchor: .yAnchor)
         }
+        titleLabel.textColor = .base1
         titleLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
         titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
@@ -94,5 +95,6 @@ class ProfilePropertyCellContentView: UIView, ConfigurableView {
             make.topEqualTo(contentView)
             make.bottomEqualTo(contentView)
         }
+        valueLabel.textColor = .base3
     }
 }

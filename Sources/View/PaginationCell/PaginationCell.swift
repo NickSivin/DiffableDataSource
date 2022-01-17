@@ -32,7 +32,7 @@ class PaginationCellContentView: UIView, ConfigurableView {
         activityIndicatorView.constraintsSupport.makeConstraints { make in
             make.centerEqualTo(self)
         }
-        activityIndicatorView.tintColor = .base2
+        activityIndicatorView.color = .base3
         activityIndicatorView.startAnimating()
     }
 }

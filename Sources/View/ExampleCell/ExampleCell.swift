@@ -49,8 +49,8 @@ class ExampleCellContentView: UIView, ConfigurableView {
             make.leadingEqualTo(contentView, offset: 16)
             make.centerEqualTo(contentView, anchor: .yAnchor)
         }
-        titleLabel.font = .systemFont(ofSize: 16, weight: .light)
-        titleLabel.textColor = .base3
+        titleLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        titleLabel.textColor = .base1
     }
     
     private func setupImageView() {

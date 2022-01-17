@@ -27,5 +27,8 @@ class MainCoordinator: BaseCoordinator {
         let coordinator = ExampleListCoordinator(navigationController: navigationController)
         add(child: coordinator)
         coordinator.start(animated: animated)
+        
+        UINavigationBar.appearance().tintColor = .base3
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.base1]
     }
 }

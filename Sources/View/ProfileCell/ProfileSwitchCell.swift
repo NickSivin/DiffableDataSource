@@ -26,6 +26,7 @@ class ProfileSwitchCellContentView: UIView, ConfigurableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         onDidLayoutSubviews?()
+        switchView.layer.cornerRadius = switchView.bounds.height / 2
     }
     
     required init?(coder: NSCoder) {
@@ -97,6 +98,7 @@ class ProfileSwitchCellContentView: UIView, ConfigurableView {
             make.leadingEqualTo(contentView, offset: 16)
             make.centerEqualTo(contentView, anchor: .yAnchor)
         }
+        titleLabel.textColor = .base1
     }
     
     private func setupSwitchView() {
@@ -106,6 +108,8 @@ class ProfileSwitchCellContentView: UIView, ConfigurableView {
             make.trailingEqualTo(contentView, offset: -16)
             make.centerEqualTo(contentView, anchor: .yAnchor)
         }
+        switchView.backgroundColor = .base2
+        switchView.tintColor = .base2
         switchView.onTintColor = .base3
         switchView.addTarget(self, action: #selector(didChangeSwitchValue), for: .valueChanged)
     }
