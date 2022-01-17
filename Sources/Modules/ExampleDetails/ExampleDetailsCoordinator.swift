@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol ExampleDetailsCoordinatorDelegate: AnyObject {
+    func exampleDetailsCoordinatorDidFinish(_ coordinator: ExampleDetailsCoordinator)
+}
+
 class ExampleDetailsCoordinator: BaseCoordinator {
+    weak var delegate: ExampleDetailsCoordinatorDelegate?
+    
     var childCoordinators: [BaseCoordinator] = []
     var onDidFinish: (() -> Void)?
     
@@ -26,6 +32,7 @@ class ExampleDetailsCoordinator: BaseCoordinator {
     private func showExampleDetailsScreen(animated: Bool) {
         let viewModel = makeExampleDetailsViewModel()
         let viewController = ExampleDetailsViewController(viewModel: viewModel)
+        viewController.delegate = self
         viewController.title = example.title
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -39,5 +46,12 @@ class ExampleDetailsCoordinator: BaseCoordinator {
         case .profile:
             return ProfileExampleViewModel()
         }
+    }
+}
+
+// MARK: - ExampleDetailsViewControllerDelegate
+extension ExampleDetailsCoordinator: ExampleDetailsViewControllerDelegate {
+    func exampleDetailsViewControllerDidFinish(_ viewController: ExampleDetailsViewController) {
+        delegate?.exampleDetailsCoordinatorDidFinish(self)
     }
 }

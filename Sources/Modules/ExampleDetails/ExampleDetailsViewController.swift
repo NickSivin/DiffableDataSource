@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol ExampleDetailsViewControllerDelegate: AnyObject {
+    func exampleDetailsViewControllerDidFinish(_ viewController: ExampleDetailsViewController)
+}
+
 class ExampleDetailsViewController: BaseViewController {
     // MARK: - Properties
+    weak var delegate: ExampleDetailsViewControllerDelegate?
+    
     private let tableView = UITableView()
     private let tableDataController: TableDataController
     
@@ -29,6 +35,12 @@ class ExampleDetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        guard parent == nil else { return }
+        delegate?.exampleDetailsViewControllerDidFinish(self)
     }
     
     // MARK: - Private

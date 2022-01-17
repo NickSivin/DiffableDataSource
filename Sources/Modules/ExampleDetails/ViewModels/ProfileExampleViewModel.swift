@@ -2,7 +2,7 @@
 //  ProfileExampleViewModel.swift
 //  DiffableDataSource
 //
-//  Created by Никита Nick Sivin.
+//  Created by Nick Sivin.
 //
 
 import Foundation
