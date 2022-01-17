@@ -27,15 +27,11 @@ class PaginationMockDataSource: MockDataSource {
         let lastIndex = min(index + Constants.elementsPerRequestCount - 1, Constants.availableElementsCount - 1)
         let indices = Array(index...lastIndex)
         
-        let items = indices.map {
-            MockDataItem(identifier: String($0),
-                         title: "Item \(String($0 + 1))")
-        }
-        
         let newCursorIndex = lastIndex + 1
         let newCursor = String(newCursorIndex)
         let hasMoreData = newCursorIndex < Constants.availableElementsCount
         
+        let items = indices.map { MockDataItem(identifier: String($0), title: "Item \(String($0 + 1))") }
         let sections = [MockDataSection(items: items)]
         
         return MockDataSourceResponse(cursor: newCursor, hasMoreData: hasMoreData, data: sections)

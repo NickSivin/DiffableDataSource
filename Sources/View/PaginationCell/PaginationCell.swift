@@ -7,9 +7,9 @@
 
 import UIKit
 
-typealias PaginationCell = AnyTableCell<PaginationContentCell>
+typealias PaginationCell = AnyTableCell<PaginationCellContentView>
 
-class PaginationContentCell: UIView, ConfigurableView {
+class PaginationCellContentView: UIView, ConfigurableView {
     private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     
     init() {

@@ -8,19 +8,30 @@
 import Foundation
 
 class PaginationExampleViewModel: ExampleDetailsViewModel, PaginationTableViewModel {
+    var onDidUpdate: (() -> Void)?
+    var profileHeaderViewModel: ProfileHeaderViewModel?
+    
     var tableDataSource: TableViewDiffableDataSource?
     var sectionViewModels: [TableSectionViewModel] = []
     
-    let mockDataSource: MockDataSource
-    var cursor: String?
-    var isLoading = false
+    private let mockDataSource = PaginationMockDataSource()
+    private var cursor: String?
     
+    private var isLoading = false
     private var hasMoreData = true
+    
     private var items: [MockDataItem] = []
     private let paginationItem = PaginationDiffableDataItem()
     
-    required init(example: Example) {
-        self.mockDataSource = example.type.mockDataSource
+    func loadData() {
+        guard !isLoading else { return }
+        isLoading = true
+        mockDataSource.getMockData(cursor: cursor) { [weak self] response in
+            guard let self = self else { return }
+            self.isLoading = false
+            self.handleResponse(response)
+            self.updateTableData(animating: !self.sectionViewModels.isEmpty)
+        }
     }
     
     func handleResponse(_ response: MockDataSourceResponse) {

@@ -11,6 +11,8 @@ struct ImageAsset {
     enum ImageName: String {
         case pagination
         case dragAndDrop
+        case profile
+        case profileImage
         
         var key: String {
             return rawValue

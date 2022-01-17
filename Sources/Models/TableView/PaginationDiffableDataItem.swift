@@ -9,5 +9,4 @@ import Foundation
 
 struct PaginationDiffableDataItem: DiffableDataItem {
     let tableIdentifier = UUID()
-    let identifier = UUID().uuidString
 }

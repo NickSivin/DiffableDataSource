@@ -7,9 +7,9 @@
 
 import UIKit
 
-typealias ExampleCell = AnyTableCell<ExampleCellContent>
+typealias ExampleCell = AnyTableCell<ExampleCellContentView>
 
-class ExampleCellContent: UIView, ConfigurableView, ReuseIdentifiable {
+class ExampleCellContentView: UIView, ConfigurableView {
     private let contentView = UIView()
     private let imageView = UIImageView()
     private let titleLabel = UILabel()

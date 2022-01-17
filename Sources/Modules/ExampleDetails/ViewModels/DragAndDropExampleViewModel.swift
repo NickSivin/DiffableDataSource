@@ -8,13 +8,16 @@
 import Foundation
 
 class DragAndDropExampleViewModel: ExampleDetailsViewModel, DragAndDroppable {
+    var onDidUpdate: (() -> Void)?
+    var profileHeaderViewModel: ProfileHeaderViewModel?
+    
     var tableDataSource: TableViewDiffableDataSource?
     var sectionViewModels: [TableSectionViewModel] = []
     var sections: [DiffableDataSection] = []
     
-    let mockDataSource: MockDataSource
-    var cursor: String?
-    var isLoading = false
+    private let mockDataSource = DragAndDropMockDataSource()
+    private var cursor: String?
+    private var isLoading = false
     
     var isDragAndDropEnabled: Bool {
         return true
@@ -24,8 +27,15 @@ class DragAndDropExampleViewModel: ExampleDetailsViewModel, DragAndDroppable {
         return sections.compactMap { $0 as? MockDataSection }
     }
     
-    required init(example: Example) {
-        self.mockDataSource = example.type.mockDataSource
+    func loadData() {
+        guard !isLoading else { return }
+        isLoading = true
+        mockDataSource.getMockData(cursor: cursor) { [weak self] response in
+            guard let self = self else { return }
+            self.isLoading = false
+            self.handleResponse(response)
+            self.updateTableData(animating: !self.sectionViewModels.isEmpty)
+        }
     }
     
     func handleResponse(_ response: MockDataSourceResponse) {

@@ -49,6 +49,17 @@
 		911C0CD2278FD62A0059CF03 /* DragAndDropMockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CD1278FD62A0059CF03 /* DragAndDropMockDataSource.swift */; };
 		911C0CD5278FE5610059CF03 /* ExampleHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CD4278FE5610059CF03 /* ExampleHeaderViewModel.swift */; };
 		911C0CD8278FE5A30059CF03 /* ExampleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CD7278FE5A30059CF03 /* ExampleHeaderView.swift */; };
+		911C0CDB279019F90059CF03 /* ProfileExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CDA279019F90059CF03 /* ProfileExampleViewModel.swift */; };
+		911C0CDD279028D80059CF03 /* ProfileMockDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CDC279028D80059CF03 /* ProfileMockDataSource.swift */; };
+		911C0CDF27902A600059CF03 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CDE27902A600059CF03 /* Profile.swift */; };
+		911C0CE2279035D90059CF03 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CE1279035D90059CF03 /* ProfileHeaderView.swift */; };
+		911C0CE42790362D0059CF03 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CE32790362D0059CF03 /* ProfileHeaderViewModel.swift */; };
+		911C0CE62791824D0059CF03 /* ProfilePropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CE52791824D0059CF03 /* ProfilePropertyCell.swift */; };
+		911C0CE8279182580059CF03 /* ProfilePropertyCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CE7279182580059CF03 /* ProfilePropertyCellViewModel.swift */; };
+		911C0CEA279187A20059CF03 /* ProfileSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CE9279187A20059CF03 /* ProfileSwitchCell.swift */; };
+		911C0CEC279187AB0059CF03 /* ProfileSwitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CEB279187AB0059CF03 /* ProfileSwitchCellViewModel.swift */; };
+		911C0CF4279197D20059CF03 /* RectCornerConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CF3279197D20059CF03 /* RectCornerConfigurable.swift */; };
+		911C0CF72794FC410059CF03 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CF62794FC410059CF03 /* ProfileSection.swift */; };
 		914F5EAA277200C8001169B6 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F5EA9277200C8001169B6 /* TableCell.swift */; };
 		914F5EAE27720293001169B6 /* TableHeaderFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F5EAD27720293001169B6 /* TableHeaderFooterViewModel.swift */; };
 		91D789192772EBB600877331 /* AnyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789182772EBB600877331 /* AnyTableCell.swift */; };
@@ -108,6 +119,17 @@
 		911C0CD1278FD62A0059CF03 /* DragAndDropMockDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDropMockDataSource.swift; sourceTree = "<group>"; };
 		911C0CD4278FE5610059CF03 /* ExampleHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleHeaderViewModel.swift; sourceTree = "<group>"; };
 		911C0CD7278FE5A30059CF03 /* ExampleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleHeaderView.swift; sourceTree = "<group>"; };
+		911C0CDA279019F90059CF03 /* ProfileExampleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileExampleViewModel.swift; sourceTree = "<group>"; };
+		911C0CDC279028D80059CF03 /* ProfileMockDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMockDataSource.swift; sourceTree = "<group>"; };
+		911C0CDE27902A600059CF03 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		911C0CE1279035D90059CF03 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		911C0CE32790362D0059CF03 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		911C0CE52791824D0059CF03 /* ProfilePropertyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePropertyCell.swift; sourceTree = "<group>"; };
+		911C0CE7279182580059CF03 /* ProfilePropertyCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePropertyCellViewModel.swift; sourceTree = "<group>"; };
+		911C0CE9279187A20059CF03 /* ProfileSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSwitchCell.swift; sourceTree = "<group>"; };
+		911C0CEB279187AB0059CF03 /* ProfileSwitchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSwitchCellViewModel.swift; sourceTree = "<group>"; };
+		911C0CF3279197D20059CF03 /* RectCornerConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectCornerConfigurable.swift; sourceTree = "<group>"; };
+		911C0CF62794FC410059CF03 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
 		914F5EA9277200C8001169B6 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		914F5EAD27720293001169B6 /* TableHeaderFooterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderFooterViewModel.swift; sourceTree = "<group>"; };
 		91D789182772EBB600877331 /* AnyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTableCell.swift; sourceTree = "<group>"; };
@@ -217,6 +239,7 @@
 				911C0C97278D4A960059CF03 /* CellHeightCaching.swift */,
 				911C0CC6278FBC3D0059CF03 /* DragAndDroppable.swift */,
 				911C0CC8278FBEE00059CF03 /* StringIdentifiable.swift */,
+				911C0CF3279197D20059CF03 /* RectCornerConfigurable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -298,6 +321,7 @@
 		911C0CA5278E9F720059CF03 /* ExampleDetails */ = {
 			isa = PBXGroup;
 			children = (
+				911C0CF52794FC2F0059CF03 /* Model */,
 				911C0CCA278FCCEF0059CF03 /* ViewModels */,
 				911C0CA6278E9F820059CF03 /* ExampleDetailsCoordinator.swift */,
 				911C0CA8278E9F8D0059CF03 /* ExampleDetailsViewController.swift */,
@@ -322,6 +346,7 @@
 				911C0CB2278EA5EE0059CF03 /* MockDataSourceResponse.swift */,
 				911C0CB0278EA56D0059CF03 /* PaginationMockDataSource.swift */,
 				911C0CD1278FD62A0059CF03 /* DragAndDropMockDataSource.swift */,
+				911C0CDC279028D80059CF03 /* ProfileMockDataSource.swift */,
 			);
 			path = MockDataStrategy;
 			sourceTree = "<group>";
@@ -340,6 +365,7 @@
 			children = (
 				911C0CCB278FCD7B0059CF03 /* PaginationExampleViewModel.swift */,
 				911C0CCF278FD1520059CF03 /* DragAndDropExampleViewModel.swift */,
+				911C0CDA279019F90059CF03 /* ProfileExampleViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -356,8 +382,29 @@
 		911C0CD9278FFA930059CF03 /* ProfileCell */ = {
 			isa = PBXGroup;
 			children = (
+				911C0CE52791824D0059CF03 /* ProfilePropertyCell.swift */,
+				911C0CE7279182580059CF03 /* ProfilePropertyCellViewModel.swift */,
+				911C0CE9279187A20059CF03 /* ProfileSwitchCell.swift */,
+				911C0CEB279187AB0059CF03 /* ProfileSwitchCellViewModel.swift */,
 			);
 			path = ProfileCell;
+			sourceTree = "<group>";
+		};
+		911C0CE0279035AE0059CF03 /* ProfileHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				911C0CE1279035D90059CF03 /* ProfileHeaderView.swift */,
+				911C0CE32790362D0059CF03 /* ProfileHeaderViewModel.swift */,
+			);
+			path = ProfileHeaderView;
+			sourceTree = "<group>";
+		};
+		911C0CF52794FC2F0059CF03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				911C0CF62794FC410059CF03 /* ProfileSection.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		91D789142772EB2C00877331 /* Models */ = {
@@ -366,6 +413,7 @@
 				91D789152772EB4B00877331 /* TableView */,
 				91D789202772F75900877331 /* Example.swift */,
 				911C0CBE278ED61A0059CF03 /* ExampleType.swift */,
+				911C0CDE27902A600059CF03 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -394,6 +442,7 @@
 		91D7893227733A9100877331 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				911C0CE0279035AE0059CF03 /* ProfileHeaderView */,
 				911C0CD9278FFA930059CF03 /* ProfileCell */,
 				911C0CD6278FE5910059CF03 /* ExampleHeaderView */,
 				911C0CB7278ECE1B0059CF03 /* PaginationCell */,
@@ -488,40 +537,50 @@
 				911C0CB5278EA7420059CF03 /* MockRequestSimulating.swift in Sources */,
 				914F5EAA277200C8001169B6 /* TableCell.swift in Sources */,
 				911C0CD0278FD1520059CF03 /* DragAndDropExampleViewModel.swift in Sources */,
+				911C0CEC279187AB0059CF03 /* ProfileSwitchCellViewModel.swift in Sources */,
 				91D7891F2772F2AA00877331 /* ExampleListCoordinator.swift in Sources */,
 				911C0CD2278FD62A0059CF03 /* DragAndDropMockDataSource.swift in Sources */,
 				91D7891C2772EED500877331 /* UIColor+AppColors.swift in Sources */,
 				911C0CB3278EA5EE0059CF03 /* MockDataSourceResponse.swift in Sources */,
 				91D78948277964BC00877331 /* TableSectionViewModel.swift in Sources */,
+				911C0CDB279019F90059CF03 /* ProfileExampleViewModel.swift in Sources */,
 				911C0C98278D4A960059CF03 /* CellHeightCaching.swift in Sources */,
 				011231F72770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift in Sources */,
 				91D7893827733ACB00877331 /* ExampleCellViewModel.swift in Sources */,
 				011231DC2770D99200BC2B55 /* ConfigurableView.swift in Sources */,
 				011231E32770DA7600BC2B55 /* MainCoordinator.swift in Sources */,
 				91D789212772F75900877331 /* Example.swift in Sources */,
+				911C0CDD279028D80059CF03 /* ProfileMockDataSource.swift in Sources */,
 				91D7893627733AC000877331 /* ExampleCell.swift in Sources */,
 				91D789232773160000877331 /* ExampleListViewController.swift in Sources */,
 				911C0CC9278FBEE00059CF03 /* StringIdentifiable.swift in Sources */,
 				011231F62770E7EC00BC2B55 /* BaseTableViewDiffableDataSource.swift in Sources */,
 				011231DE2770D99200BC2B55 /* ReuseIdentifiable.swift in Sources */,
 				011231DD2770D99200BC2B55 /* ConfigurableViewModel.swift in Sources */,
+				911C0CE8279182580059CF03 /* ProfilePropertyCellViewModel.swift in Sources */,
 				911C0CB1278EA56D0059CF03 /* PaginationMockDataSource.swift in Sources */,
 				911C0C9F278D5D2F0059CF03 /* ExampleListFactory.swift in Sources */,
 				911C0CA7278E9F820059CF03 /* ExampleDetailsCoordinator.swift in Sources */,
 				911C0CC3278EE61F0059CF03 /* PaginationTableViewModel.swift in Sources */,
 				911C0CBF278ED61A0059CF03 /* ExampleType.swift in Sources */,
 				911C0CCC278FCD7B0059CF03 /* PaginationExampleViewModel.swift in Sources */,
+				911C0CF72794FC410059CF03 /* ProfileSection.swift in Sources */,
 				011231CF2770D83B00BC2B55 /* AppDelegate.swift in Sources */,
+				911C0CE42790362D0059CF03 /* ProfileHeaderViewModel.swift in Sources */,
+				911C0CDF27902A600059CF03 /* Profile.swift in Sources */,
 				911C0C94278C4CE90059CF03 /* TableDataController.swift in Sources */,
 				011231E92770DB5700BC2B55 /* Localized.swift in Sources */,
 				911C0CAF278EA4860059CF03 /* MockDataSource.swift in Sources */,
 				011231D72770D8DB00BC2B55 /* UIView+Autolayout.swift in Sources */,
 				011231E82770DB5700BC2B55 /* ImageAsset.swift in Sources */,
 				911C0CA9278E9F8D0059CF03 /* ExampleDetailsViewController.swift in Sources */,
+				911C0CEA279187A20059CF03 /* ProfileSwitchCell.swift in Sources */,
+				911C0CF4279197D20059CF03 /* RectCornerConfigurable.swift in Sources */,
 				011231F02770DC3200BC2B55 /* String+Split.swift in Sources */,
 				911C0C96278D49100059CF03 /* TableViewModel.swift in Sources */,
 				911C0C9A278D4DB00059CF03 /* TableViewDiffableDataSource.swift in Sources */,
 				911C0CB9278ECE280059CF03 /* PaginationCell.swift in Sources */,
+				911C0CE62791824D0059CF03 /* ProfilePropertyCell.swift in Sources */,
 				91D789462779643300877331 /* CommonTableSectionViewModel.swift in Sources */,
 				911C0CC7278FBC3D0059CF03 /* DragAndDroppable.swift in Sources */,
 				911C0CD8278FE5A30059CF03 /* ExampleHeaderView.swift in Sources */,
@@ -530,6 +589,7 @@
 				91D789192772EBB600877331 /* AnyTableCell.swift in Sources */,
 				011231D42770D87B00BC2B55 /* BaseCoordinator.swift in Sources */,
 				011231FA2770E9FA00BC2B55 /* Array+ElementAtIndex.swift in Sources */,
+				911C0CE2279035D90059CF03 /* ProfileHeaderView.swift in Sources */,
 				911C0CBB278ECE2F0059CF03 /* PaginationCellViewModel.swift in Sources */,
 				911C0CC1278EE2D40059CF03 /* PaginationDiffableDataItem.swift in Sources */,
 				011231D32770D87B00BC2B55 /* BaseViewController.swift in Sources */,

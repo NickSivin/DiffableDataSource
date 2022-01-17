@@ -35,6 +35,7 @@ class ExampleDetailsViewController: BaseViewController {
     private func setup() {
         view.backgroundColor = .background
         setupTableView()
+        bindToViewModel()
         viewModel.loadData()
     }
     
@@ -46,6 +47,44 @@ class ExampleDetailsViewController: BaseViewController {
         
         tableView.register(ExampleCell.self, forCellReuseIdentifier: ExampleCell.reuseIdentifier)
         tableView.register(PaginationCell.self, forCellReuseIdentifier: PaginationCell.reuseIdentifier)
+        tableView.register(ProfilePropertyCell.self, forCellReuseIdentifier: ProfilePropertyCell.reuseIdentifier)
+        tableView.register(ProfileSwitchCell.self, forCellReuseIdentifier: ProfileSwitchCell.reuseIdentifier)
         tableView.register(ExampleHeaderView.self, forHeaderFooterViewReuseIdentifier: ExampleHeaderView.reuseIdentifier)
+    }
+    
+    private func bindToViewModel() {
+        viewModel.onDidUpdate = { [weak self] in
+            self?.addProfileHeaderIfNeeded()
+            self?.updateProfileHeaderView()
+        }
+    }
+    
+    private func addProfileHeaderIfNeeded() {
+        guard tableView.tableHeaderView == nil,
+              let profileHeaderViewModel = viewModel.profileHeaderViewModel else {
+                  return
+        }
+        
+        let view = ProfileHeaderView()
+        view.configure(viewModel: profileHeaderViewModel)
+        tableView.tableHeaderView = view
+        
+        view.constraintsSupport.makeConstraints { make in
+            make.topEqualTo(tableView)
+            make.widthEqualTo(tableView)
+            make.centerEqualTo(tableView, anchor: .xAnchor)
+        }
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        
+        tableView.tableHeaderView = view
+    }
+    
+    private func updateProfileHeaderView() {
+        guard let view = tableView.tableHeaderView as? ProfileHeaderView,
+              let profileHeaderViewModel = viewModel.profileHeaderViewModel else {
+                  return
+        }
+        view.configure(viewModel: profileHeaderViewModel)
     }
 }

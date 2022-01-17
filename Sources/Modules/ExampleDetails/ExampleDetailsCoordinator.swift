@@ -33,9 +33,11 @@ class ExampleDetailsCoordinator: BaseCoordinator {
     private func makeExampleDetailsViewModel() -> ExampleDetailsViewModel {
         switch example.type {
         case .pagination:
-            return PaginationExampleViewModel(example: example)
+            return PaginationExampleViewModel()
         case .dragAndDrop:
-            return DragAndDropExampleViewModel(example: example)
+            return DragAndDropExampleViewModel()
+        case .profile:
+            return ProfileExampleViewModel()
         }
     }
 }

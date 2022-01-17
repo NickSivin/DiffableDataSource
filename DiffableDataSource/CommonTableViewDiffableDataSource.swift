@@ -11,7 +11,7 @@ protocol DiffableDataSection: AnyObject {
     var items: [DiffableDataItem] { get set }
 }
 
-protocol DiffableDataItem: StringIdentifiable {
+protocol DiffableDataItem {
     var tableIdentifier: UUID { get }
 }
 

@@ -70,6 +70,12 @@ struct ExampleDetailsStrings: LocalizedStrings {
         case pagination
         case dragAndDrop
         case profile
+        case propertyPhone
+        case propertyEmail
+        case notificationAll
+        case notificationFeed
+        case notificationMessages
+        case notificationSettings
     }
     
     var tableName: String? {

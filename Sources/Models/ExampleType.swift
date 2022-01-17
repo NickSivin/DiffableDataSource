@@ -10,15 +10,5 @@ import Foundation
 enum ExampleType {
     case pagination
     case dragAndDrop
-}
-
-extension ExampleType {
-    var mockDataSource: MockDataSource {
-        switch self {
-        case .pagination:
-            return PaginationMockDataSource()
-        case .dragAndDrop:
-            return DragAndDropMockDataSource()
-        }
-    }
+    case profile
 }

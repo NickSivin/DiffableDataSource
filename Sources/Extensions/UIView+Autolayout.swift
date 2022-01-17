@@ -94,6 +94,16 @@ struct LayoutConstraintMaker {
         }
     }
     
+    func widthEqualTo(_ view: UIView, priority: UILayoutPriority = .required) {
+        let constraint = self.view?.widthAnchor.constraint(equalTo: view.widthAnchor)
+        updateConstraintPriorityAndSetActive(constraint, priority: priority)
+    }
+    
+    func heightEqualTo(_ view: UIView, priority: UILayoutPriority = .required) {
+        let constraint = self.view?.heightAnchor.constraint(equalTo: view.heightAnchor)
+        updateConstraintPriorityAndSetActive(constraint, priority: priority)
+    }
+    
     func widthEqualTo(_ constant: CGFloat, priority: UILayoutPriority = .required) {
         let constraint = self.view?.widthAnchor.constraint(equalToConstant: constant)
         updateConstraintPriorityAndSetActive(constraint, priority: priority)

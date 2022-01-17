@@ -30,7 +30,7 @@ extension DragAndDroppable where Self: TableViewModel {
     func itemID(atIndexPath indexPath: IndexPath) -> String? {
         let section = sections.element(at: indexPath.section)
         let item = section?.items.element(at: indexPath.row)
-        return item?.identifier
+        return item?.tableIdentifier.uuidString
     }
     
     func moveElement(withID id: String, from indexPath: IndexPath, to finalIndexPath: IndexPath) {

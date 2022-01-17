@@ -18,6 +18,6 @@ class DragAndDropMockDataSource: MockDataSource {
     }
     
     private func makeMockDataItems() -> [MockDataItem] {
-        return Array(1...30).map { MockDataItem(title: "Item \(String($0))") }
+        return Array(1...15).map { MockDataItem(title: "Item \(String($0))") }
     }
 }

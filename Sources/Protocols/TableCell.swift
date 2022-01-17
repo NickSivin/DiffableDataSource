@@ -14,9 +14,7 @@ protocol TableCellViewModel: ConfigurableViewModel {
 }
 
 extension TableCellViewModel {
-    func select(deselectionClosure: (() -> Void)?) {
-        select(deselectionClosure: deselectionClosure)
-    }
+    func select(deselectionClosure: (() -> Void)?) {}
     
     var selectionStyle: UITableViewCell.SelectionStyle {
         return .none

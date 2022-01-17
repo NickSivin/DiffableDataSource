@@ -9,4 +9,10 @@
 "pagination" = "Pagination";
 "drag.and.drop" = "Drag and drop";
 "profile" = "Profile";
-§
+
+"property.phone" = "Phone:";
+"property.email" = "Email:";
+"notification.all" = "All notifications";
+"notification.feed" = "Feed";
+"notification.messages" = "Messages";
+"notification.settings" = "Settings";
