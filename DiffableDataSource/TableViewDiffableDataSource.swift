@@ -7,66 +7,57 @@
 
 import UIKit
 
-protocol TableViewDiffableDataSource: AnyObject {
+protocol DiffableDataSection: AnyObject {
+    var items: [DiffableDataItem] { get set }
+}
+
+protocol DiffableDataItem {
+    var tableIdentifier: UUID { get }
+}
+
+protocol TableViewDiffableDataNewStateUpdating {
     typealias Section = DiffableDataSection
     typealias Item = DiffableDataItem
     typealias RowAnimation = UITableView.RowAnimation
     
+    // Methods updates data by using new snapshot
     func updateData(sections: [Section], rowAnimation: RowAnimation, animating: Bool)
     func updateData(items: [Item], rowAnimation: RowAnimation, animating: Bool)
-    func reloadData(sections: [Section], rowAnimation: RowAnimation, animating: Bool)
-    func insertItem(_ item: Item, at index: Int, in section: Int, rowAnimation: RowAnimation, animating: Bool)
-    func insertItems(_ items: [Item], at index: Int, in section: Int, rowAnimation: RowAnimation, animating: Bool)
-    func appendItem(_ item: Item, in section: Int, rowAnimation: RowAnimation, animating: Bool)
-    func appendItems(_ items: [Item], in section: Int, rowAnimation: RowAnimation, animating: Bool)
-    func deleteItem(_ item: Item, rowAnimation: RowAnimation, animating: Bool)
-    func deleteItems(_ items: [Item], rowAnimation: RowAnimation, animating: Bool)
-    func reloadItem(_ item: Item, rowAnimation: RowAnimation, animating: Bool)
-    func reloadItems(_ items: [Item], rowAnimation: RowAnimation, animating: Bool)
 }
+
+protocol TableViewDiffableDataCurrentStateUpdating {
+    typealias SnapshotContext = TableViewDiffableDataSnapshotContext
+    typealias Section = DiffableDataSection
+    typealias Item = DiffableDataItem
+    
+    // Methods updates data by using snapshot of current context
+    func insertItem(_ item: Item, at index: Int, in section: Int) -> SnapshotContext
+    func insertItems(_ items: [Item], at index: Int, in section: Int) -> SnapshotContext
+    func appendItem(_ item: Item, in section: Int) -> SnapshotContext
+    func appendItems(_ items: [Item], in section: Int) -> SnapshotContext
+    func deleteItem(_ item: Item) -> SnapshotContext
+    func deleteItems(_ items: [Item]) -> SnapshotContext
+    func reloadItem(_ item: Item) -> SnapshotContext
+    func reloadItems(_ items: [Item]) -> SnapshotContext
+}
+
+protocol TableViewDiffableDataApplying {
+    // TODO: Change concrete generic types to protocols or something similar
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Int, UUID>
+    typealias RowAnimation = UITableView.RowAnimation
+    func apply(_ snapshot: Snapshot, rowAnimation: RowAnimation, animatingDifferences: Bool)
+}
+
+protocol TableViewDiffableDataSource: AnyObject, TableViewDiffableDataNewStateUpdating
+                                    & TableViewDiffableDataCurrentStateUpdating
+                                    & TableViewDiffableDataApplying {}
 
 extension TableViewDiffableDataSource {
     func updateData(sections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {
         updateData(sections: sections, rowAnimation: rowAnimation, animating: animating)
     }
-    
+
     func updateData(items: [Item], rowAnimation: RowAnimation = .none, animating: Bool = false) {
         updateData(items: items, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func reloadData(sections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        reloadData(sections: sections, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func insertItem(_ item: Item, at index: Int, in section: Int, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        insertItem(item, at: index, in: section, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func insertItems(_ items: [Item], at index: Int, in section: Int, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        insertItems(items, at: index, in: section, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func appendItem(_ item: Item, in section: Int, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        appendItem(item, in: section, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func appendItems(_ items: [Item], in section: Int, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        appendItems(items, in: section, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func deleteItem(_ item: Item, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        deleteItem(item, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func deleteItems(_ items: [Item], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        deleteItems(items, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func reloadItem(_ item: Item, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        reloadItem(item, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func reloadItems(_ items: [Item], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        reloadItems(items, rowAnimation: rowAnimation, animating: animating)
     }
 }

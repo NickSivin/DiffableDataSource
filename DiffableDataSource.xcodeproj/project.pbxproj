@@ -62,6 +62,8 @@
 		911C0CF72794FC410059CF03 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C0CF62794FC410059CF03 /* ProfileSection.swift */; };
 		914F5EAA277200C8001169B6 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F5EA9277200C8001169B6 /* TableCell.swift */; };
 		914F5EAE27720293001169B6 /* TableHeaderFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F5EAD27720293001169B6 /* TableHeaderFooterViewModel.swift */; };
+		9179D0B7279807EC00AE1AE2 /* TableViewDiffableDataSnapshotContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9179D0B6279807EC00AE1AE2 /* TableViewDiffableDataSnapshotContext.swift */; };
+		9179D0B927980E0D00AE1AE2 /* CommonTableViewDiffableDataSnapshotContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9179D0B827980E0D00AE1AE2 /* CommonTableViewDiffableDataSnapshotContext.swift */; };
 		91D789192772EBB600877331 /* AnyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D789182772EBB600877331 /* AnyTableCell.swift */; };
 		91D7891C2772EED500877331 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D7891B2772EED500877331 /* UIColor+AppColors.swift */; };
 		91D7891F2772F2AA00877331 /* ExampleListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D7891E2772F2AA00877331 /* ExampleListCoordinator.swift */; };
@@ -132,6 +134,8 @@
 		911C0CF62794FC410059CF03 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
 		914F5EA9277200C8001169B6 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		914F5EAD27720293001169B6 /* TableHeaderFooterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderFooterViewModel.swift; sourceTree = "<group>"; };
+		9179D0B6279807EC00AE1AE2 /* TableViewDiffableDataSnapshotContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDiffableDataSnapshotContext.swift; sourceTree = "<group>"; };
+		9179D0B827980E0D00AE1AE2 /* CommonTableViewDiffableDataSnapshotContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableViewDiffableDataSnapshotContext.swift; sourceTree = "<group>"; };
 		91D789182772EBB600877331 /* AnyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTableCell.swift; sourceTree = "<group>"; };
 		91D7891B2772EED500877331 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		91D7891E2772F2AA00877331 /* ExampleListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleListCoordinator.swift; sourceTree = "<group>"; };
@@ -295,7 +299,9 @@
 			children = (
 				011231F42770E7EC00BC2B55 /* BaseTableViewDiffableDataSource.swift */,
 				911C0C99278D4DB00059CF03 /* TableViewDiffableDataSource.swift */,
+				9179D0B6279807EC00AE1AE2 /* TableViewDiffableDataSnapshotContext.swift */,
 				011231F52770E7EC00BC2B55 /* CommonTableViewDiffableDataSource.swift */,
+				9179D0B827980E0D00AE1AE2 /* CommonTableViewDiffableDataSnapshotContext.swift */,
 			);
 			path = DiffableDataSource;
 			sourceTree = "<group>";
@@ -536,6 +542,7 @@
 				911C0CAB278E9F940059CF03 /* ExampleDetailsViewModel.swift in Sources */,
 				911C0CB5278EA7420059CF03 /* MockRequestSimulating.swift in Sources */,
 				914F5EAA277200C8001169B6 /* TableCell.swift in Sources */,
+				9179D0B927980E0D00AE1AE2 /* CommonTableViewDiffableDataSnapshotContext.swift in Sources */,
 				911C0CD0278FD1520059CF03 /* DragAndDropExampleViewModel.swift in Sources */,
 				911C0CEC279187AB0059CF03 /* ProfileSwitchCellViewModel.swift in Sources */,
 				91D7891F2772F2AA00877331 /* ExampleListCoordinator.swift in Sources */,
@@ -574,6 +581,7 @@
 				011231D72770D8DB00BC2B55 /* UIView+Autolayout.swift in Sources */,
 				011231E82770DB5700BC2B55 /* ImageAsset.swift in Sources */,
 				911C0CA9278E9F8D0059CF03 /* ExampleDetailsViewController.swift in Sources */,
+				9179D0B7279807EC00AE1AE2 /* TableViewDiffableDataSnapshotContext.swift in Sources */,
 				911C0CEA279187A20059CF03 /* ProfileSwitchCell.swift in Sources */,
 				911C0CF4279197D20059CF03 /* RectCornerConfigurable.swift in Sources */,
 				011231F02770DC3200BC2B55 /* String+Split.swift in Sources */,

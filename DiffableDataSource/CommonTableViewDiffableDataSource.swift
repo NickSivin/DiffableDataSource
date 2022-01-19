@@ -7,14 +7,6 @@
 
 import UIKit
 
-protocol DiffableDataSection: AnyObject {
-    var items: [DiffableDataItem] { get set }
-}
-
-protocol DiffableDataItem {
-    var tableIdentifier: UUID { get }
-}
-
 class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource<CommonTableViewDiffableDataSource.SectionIdentifier,
                                          CommonTableViewDiffableDataSource.ItemIdentifier>, TableViewDiffableDataSource {
     typealias Section = DiffableDataSection
@@ -22,168 +14,70 @@ class CommonTableViewDiffableDataSource: BaseTableViewDiffableDataSource<CommonT
     typealias RowAnimation = UITableView.RowAnimation
     typealias SectionIdentifier = Int
     typealias ItemIdentifier = UUID
-    typealias Snapshot = NSDiffableDataSourceSnapshot<SectionIdentifier, ItemIdentifier>
+    
+    private var currentContext: SnapshotContext {
+        return CommonTableViewDiffableDataSnapshotContext(snapshot: snapshot(), dataSource: self)
+    }
+    
+    private var newContext: SnapshotContext {
+        return CommonTableViewDiffableDataSnapshotContext(snapshot: makeNewSnapshot(), dataSource: self)
+    }
+    
+    func apply(_ snapshot: Snapshot, rowAnimation: RowAnimation, animatingDifferences: Bool) {
+        defaultRowAnimation = rowAnimation
+        apply(snapshot, animatingDifferences: animatingDifferences)
+    }
     
     func updateData(sections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        snapshotContext(rowAnimation: rowAnimation, isCurrentState: false, animatingDifferences: animating) { snapshot in
-            sections
-                .map { $0.items }
-                .enumerated()
-                .forEach { section, items in
-                    appendSectionIfNeeded(section, snapshot: &snapshot)
-                    snapshot.appendItems(items.tableIdentifiers, toSection: section)
-            }
-        }
-    }
-    
-    func updateData(items: [Item], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        snapshotContext(rowAnimation: rowAnimation, isCurrentState: false, animatingDifferences: animating) { snapshot in
-            appendSectionIfNeeded(0, snapshot: &snapshot)
-            snapshot.appendItems(items.tableIdentifiers, toSection: 0)
-        }
-    }
-    
-    func reloadData(sections: [Section], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        snapshotContext(rowAnimation: rowAnimation, animatingDifferences: animating) { snapshot in
-            snapshot.deleteAllItems()
-            appendItems(at: sections, snapshot: &snapshot)
-        }
-    }
-    
-    func insertItem(_ item: Item, at index: Int, in section: Int, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        insertItems([item], at: index, in: section, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func insertItems(_ items: [Item], at index: Int, in section: Int, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        snapshotContext(rowAnimation: rowAnimation, animatingDifferences: animating) { snapshot in
-            insertItems(items, at: index, in: section, snapshot: &snapshot)
-        }
-    }
-    
-    func appendItem(_ item: Item, in section: Int, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        appendItems([item], in: section, rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func appendItems(_ items: [Item], in section: Int, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        snapshotContext(rowAnimation: rowAnimation, animatingDifferences: animating) { snapshot in
-            snapshot.appendItems(items.tableIdentifiers, toSection: section)
-        }
-    }
-    
-    func deleteItem(_ item: Item, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        deleteItems([item], rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func deleteItems(_ items: [Item], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        snapshotContext(rowAnimation: rowAnimation, animatingDifferences: animating) { snapshot in
-            deleteItems(items, snapshot: &snapshot)
-        }
-    }
-    
-    func reloadItem(_ item: Item, rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        reloadItems([item], rowAnimation: rowAnimation, animating: animating)
-    }
-    
-    func reloadItems(_ items: [Item], rowAnimation: RowAnimation = .none, animating: Bool = false) {
-        snapshotContext(rowAnimation: rowAnimation, animatingDifferences: animating) { snapshot in
-            let itemIdentifiers = items.map { $0.tableIdentifier }
-            let existingItems = itemIdentifiers.filter { snapshot.itemIdentifiers.contains($0) }
-            snapshot.reloadItems(existingItems)
-        }
-    }
-    
-    private func insertItems(_ items: [Item], at index: Int, in section: Int, snapshot: inout Snapshot) {
-        let itemIdentifiers = items.map { $0.tableIdentifier }
-        appendSectionIfNeeded(section, snapshot: &snapshot)
-        deleteExistingItems(itemIdentifiers, in: section, snapshot: &snapshot)
-        insertItems(itemIdentifiers, at: index, in: section, snapshot: &snapshot)
-    }
-    
-    private func appendItems(at sections: [Section], snapshot: inout Snapshot) {
+        var context = newContext
         sections
             .map { $0.items }
             .enumerated()
             .forEach { section, items in
-                appendSectionIfNeeded(section, snapshot: &snapshot)
-                appendMissingItems(items.tableIdentifiers, in: section, snapshot: &snapshot)
-                reloadExistingItems(items.tableIdentifiers, in: section, snapshot: &snapshot)
-        }
+                context = context.appendItems(items, in: section)
+            }
+        context.apply(rowAnimation: rowAnimation, animatingDifferences: animating)
     }
     
-    private func deleteItems(_ items: [Item], snapshot: inout Snapshot) {
-        let sections = Array(Set(items.tableIdentifiers.compactMap { snapshot.sectionIdentifier(containingItem: $0) }))
-        snapshot.deleteItems(items.tableIdentifiers)
-        sections.forEach { deleteSectionIfNeeded($0, snapshot: &snapshot) }
+    func updateData(items: [Item], rowAnimation: RowAnimation = .none, animating: Bool = false) {
+        newContext
+            .appendItems(items, in: 0)
+            .apply(rowAnimation: rowAnimation, animatingDifferences: animating)
     }
     
-    private func deleteExistingItems(_ itemIdentifiers: [ItemIdentifier], in section: Int, snapshot: inout Snapshot) {
-        let sectionItems = snapshot.itemIdentifiers(inSection: section)
-        let existingItems = itemIdentifiers.filter { sectionItems.contains($0) }
-        if !existingItems.isEmpty {
-            snapshot.deleteItems(existingItems)
-        }
+    func insertItem(_ item: Item, at index: Int, in section: Int) -> SnapshotContext {
+        return currentContext.insertItem(item, at: index, in: section)
     }
     
-    private func insertItems(_ itemIdentifiers: [ItemIdentifier], at index: Int, in section: Int, snapshot: inout Snapshot) {
-        let sectionItems = snapshot.itemIdentifiers(inSection: section)
-        let previousItem = sectionItems.element(at: index - 1)
-        let nextItem = sectionItems.element(at: index)
-        
-        if let previousItem = previousItem {
-            snapshot.insertItems(itemIdentifiers, afterItem: previousItem)
-        } else if let nextItem = nextItem {
-            snapshot.insertItems(itemIdentifiers, beforeItem: nextItem)
-        } else {
-            snapshot.appendItems(itemIdentifiers, toSection: section)
-        }
+    func insertItems(_ items: [Item], at index: Int, in section: Int) -> SnapshotContext {
+        return currentContext.insertItems(items, at: index, in: section)
     }
     
-    private func appendMissingItems(_ itemIdentifiers: [ItemIdentifier], in section: Int, snapshot: inout Snapshot) {
-        let sectionItems = snapshot.itemIdentifiers(inSection: section)
-        let newItems = itemIdentifiers.filter { !sectionItems.contains($0) }
-        snapshot.appendItems(newItems, toSection: section)
+    func appendItem(_ item: Item, in section: Int) -> SnapshotContext {
+        return currentContext.appendItem(item, in: section)
     }
     
-    private func reloadExistingItems(_ itemIdentifiers: [ItemIdentifier], in section: Int, snapshot: inout Snapshot) {
-        let sectionItems = snapshot.itemIdentifiers(inSection: section)
-        let existingItems = itemIdentifiers.filter { sectionItems.contains($0) }
-        snapshot.reloadItems(existingItems)
+    func appendItems(_ items: [Item], in section: Int) -> SnapshotContext {
+        return currentContext.appendItems(items, in: section)
     }
     
-    private func deleteExtraItems(_ itemIdentifiers: [ItemIdentifier], in section: Int, snapshot: inout Snapshot) {
-        let sectionItems = snapshot.itemIdentifiers(inSection: section)
-        let outdatedItems = sectionItems.filter { !itemIdentifiers.contains($0) }
-        snapshot.deleteItems(outdatedItems)
+    func deleteItem(_ item: Item) -> SnapshotContext {
+        return currentContext.deleteItem(item)
     }
     
-    private func appendSectionIfNeeded(_ section: Int, snapshot: inout Snapshot) {
-        guard !snapshot.sectionIdentifiers.contains(section) else { return }
-        snapshot.appendSections([section])
+    func deleteItems(_ items: [Item]) -> SnapshotContext {
+        return currentContext.deleteItems(items)
     }
     
-    private func deleteSectionIfNeeded(_ section: Int, snapshot: inout Snapshot) {
-        guard snapshot.itemIdentifiers(inSection: section).isEmpty else { return }
-        snapshot.deleteSections([section])
+    func reloadItem(_ item: Item) -> SnapshotContext {
+        return currentContext.reloadItem(item)
     }
     
-    private func snapshotContext(rowAnimation: RowAnimation,
-                                 isCurrentState: Bool = true,
-                                 animatingDifferences: Bool = true,
-                                 changes: (_ snapshot: inout Snapshot) -> Void) {
-        defaultRowAnimation = rowAnimation
-        
-        var snapshot = isCurrentState ? snapshot() : makeNewSnapshot()
-        changes(&snapshot)
-        apply(snapshot, animatingDifferences: animatingDifferences)
+    func reloadItems(_ items: [Item]) -> SnapshotContext {
+        return currentContext.reloadItems(items)
     }
     
     private func makeNewSnapshot() -> NSDiffableDataSourceSnapshot<SectionIdentifier, ItemIdentifier> {
         return NSDiffableDataSourceSnapshot<SectionIdentifier, ItemIdentifier>()
-    }
-}
-
-private extension Array where Element == DiffableDataItem {
-    var tableIdentifiers: [UUID] {
-        return map { $0.tableIdentifier }
     }
 }
