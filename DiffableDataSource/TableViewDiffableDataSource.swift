@@ -30,7 +30,7 @@ protocol TableViewDiffableDataCurrentStateUpdating {
     typealias Section = DiffableDataSection
     typealias Item = DiffableDataItem
     
-    // Methods updates data by using snapshot of current context
+    // Methods updates data by using snapshot of current snapshot
     func insertItem(_ item: Item, at index: Int, in section: Int) -> SnapshotContext
     func insertItems(_ items: [Item], at index: Int, in section: Int) -> SnapshotContext
     func appendItem(_ item: Item, in section: Int) -> SnapshotContext
